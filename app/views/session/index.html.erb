@@ -1,0 +1,21 @@
+<h1>수업 자료 게시판</h1>
+<p>수업 자료와 답변이 이루어질 게시판입니다.</p>
+
+<a href = '/session/new'>글 작성하기</a>
+
+<table>
+    <tr>
+        <th>#</th>
+        <th>제목</th>
+        <th>작성자</th>
+        <th>작성 시간</th>
+    </tr>
+    <% @sessions.each do |x|%>
+        <tr onclick="window.location='/session/show/<%=x.id%>';">
+            <td><%=x.id%></td>
+            <td><%=x.title%></td>
+            <td><%=x.user_email%></td>
+            <td><%=x.created_at%></td>
+        </tr>
+    <% end %>
+</table>

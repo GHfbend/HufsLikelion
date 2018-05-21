@@ -1,0 +1,10 @@
+<h1>글 내용</h1>
+<p>글 내용을 보여주는 페이지 입니다.</p>
+
+제목: <%= @tip. title %> <br>
+내용: <%= simple_format(@tip.content)%> <br>
+
+<a href = "/tip/edit/<%= @tip.id %>">수정</a>
+<a href = "/tip/destroy/<%= @tip.id %>">삭제</a><br>
+
+<a href = "/tip/index">목록</a>

@@ -1,0 +1,2 @@
+class SessionComment < ApplicationRecord
+end

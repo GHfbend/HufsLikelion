@@ -1,0 +1,2 @@
+class TipComment < ApplicationRecord
+end

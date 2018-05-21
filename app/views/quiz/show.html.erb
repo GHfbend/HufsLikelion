@@ -1,0 +1,10 @@
+<h1>글 내용</h1>
+<p>글 내용을 보여주는 페이지 입니다.</p>
+
+제목: <%= @quiz. title %> <br>
+내용: <%= simple_format(@quiz.content)%> <br>
+
+<a href = "/quiz/edit/<%= @quiz.id %>">수정</a>
+<a href = "/quiz/destroy/<%= @quiz.id %>">삭제</a><br>
+
+<a href = "/quiz/index">목록</a>

@@ -1,18 +1,18 @@
 # README
 
 Git에 올리는 법 (인건) --> 너무 많이 삽질을 해서 공유하고자 올립니다.
+    방법
+        1.GHFbend/HufsLikelion 을 Fork 한다
+        2.(본인의유저이름) / HufsLikelion 을 C9에 클론한다.
+        3. 거기서 작업을 한다.
+        4. 작업을 완료하면
+            1. git add .
+            2. git commit -m "원하는 메세지"
+            3. git push origin master:(브랜치 이름 (master, front_end, back_end)) 
+                ex) 저 같은 경우에는 백엔드에 올리기 때문에 "git push origin master:back_end" 로 올립니다.
 
-    1.GHFbend/HufsLikelion 을 Fork 한다
-    2.(본인의유저이름) / HufsLikelion 을 C9에 클론한다.
-    3. 거기서 작업을 한다.
-    4. 작업을 완료하면
-        1. git add .
-        2. git commit -m "원하는 메세지"
-        3. git push origin master:(브랜치 이름 (master, front_end, back_end)) 
-            ex) 저 같은 경우에는 백엔드에 올리기 때문에 "git push origin master:back_end" 로 올립니다.
-            
-    5.(본인의유저이름) / HufsLikelion 에 들어가서 푸시가 잘 됐는지 확인해본다.
-    6. 문제 없이 푸시 됐다면 New Pull Request 를 진행한다.
+        5.(본인의유저이름) / HufsLikelion 에 들어가서 푸시가 잘 됐는지 확인해본다.
+        6. 문제 없이 푸시 됐다면 New Pull Request 를 진행한다.
 
 백엔드 진행
 

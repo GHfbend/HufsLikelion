@@ -1,0 +1,10 @@
+<h1>글 내용</h1>
+<p>글 내용을 보여주는 페이지 입니다.</p>
+
+제목: <%= @session. title %> <br>
+내용: <%= simple_format(@session.content)%> <br>
+
+<a href = "/session/edit/<%= @session.id %>">수정</a>
+<a href = "/session/destroy/<%= @session.id %>">삭제</a><br>
+
+<a href = "/session/index">목록</a>

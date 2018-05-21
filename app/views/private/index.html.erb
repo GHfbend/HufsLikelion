@@ -1,0 +1,13 @@
+<h1>멋사 페이지</h1>
+<p>멋사 전용 페이지 입니다.</p>
+
+<a href = "/tip/index">팁 페이지</a><br>
+<a href = "/quiz/index">퀴즈 페이지</a><br>
+<a href = "/session/index">수업자료 페이지</a><br>
+<a href = "/qna/index">질문 페이지</a><br>
+
+<h3>알림장</h3>
+<% @slack.each do |x| %>
+<h4># <%=x.id%> (<%= x.created_at %>)</h4>
+<p><%= x.content %></p>
+<%end%>

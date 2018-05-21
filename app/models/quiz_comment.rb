@@ -1,0 +1,2 @@
+class QuizComment < ApplicationRecord
+end

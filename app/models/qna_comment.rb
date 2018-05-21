@@ -1,0 +1,2 @@
+class QnaComment < ApplicationRecord
+end

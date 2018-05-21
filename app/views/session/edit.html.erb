@@ -1,0 +1,10 @@
+<h1>수업 자료 수정</h1>
+<p>수업 자료를 수정하는 페이지 입니다</p>
+
+<form action="/session/update/<%=@session.id%>" method="post">
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+    제목: <input type="string" name="title" value=<%=@session.title%>><br>
+    내용: <textarea name="content" rows="4" cols="50"><%=@session.content%></textarea><br>
+          <input type="hidden" name="user_email" value="<%= current_user.email%>">
+          <input type="submit" value="수정">
+</form>

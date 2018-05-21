@@ -1,7 +1,9 @@
 # README
 
 Git에 올리는 법 (인건) --> 너무 많이 삽질을 해서 공유하고자 올립니다.
+
     방법
+    
         1.GHFbend/HufsLikelion 을 Fork 한다
         2.(본인의유저이름) / HufsLikelion 을 C9에 클론한다.
         3. 거기서 작업을 한다.

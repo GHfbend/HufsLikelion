@@ -1,0 +1,2 @@
+module QnaHelper
+end

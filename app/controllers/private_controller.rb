@@ -1,0 +1,2 @@
+class PrivateController < ApplicationController
+end

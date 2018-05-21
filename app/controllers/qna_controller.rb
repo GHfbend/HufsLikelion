@@ -1,0 +1,2 @@
+class QnaController < ApplicationController
+end

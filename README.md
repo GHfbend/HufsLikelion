@@ -8,15 +8,14 @@
         2.(본인의유저이름) / HufsLikelion 을 C9에 클론한다.
         3. 거기서 작업을 한다.
         4. 작업을 완료하면
-            1. git switch back_end 아니면 git switch front_end
+            1. git checkout back_end 아니면 git checkout front_end
             1. git add .
             2. git commit -m "원하는 메세지"
-            3. git push origin master:(브랜치 이름 (master, front_end, back_end)) 
-                ex) 저 같은 경우에는 백엔드에 올리기 때문에 "git push origin master:back_end" 로 올립니다.
+            3. git push 
 
         5.(본인의유저이름) / HufsLikelion 에 들어가서 푸시가 잘 됐는지 확인해본다.
         6. 문제 없이 푸시 됐다면 New Pull Request 를 진행한다.
-        7. 기획팀에서 리퀘스트를 확인하고 master 브랜치로 merge를 해주실껍니다. 그래서 매번 개발 시작하실 때, "git pull origin master"를 하면 변동이 적용될 것입니다. 매번 시작하실 때마다 한번 입력하시고 진행해주시면 좋을 것 같습니다!
+        7. 기획팀에서 리퀘스트를 확인하고 master 브랜치로 merge를 해주실껍니다. 그래서 매번 개발 시작하실 때, "git pull origin master"를 하면 변동이 적용될 것입니다.  매번 시작하실 때마다 한번 입력하시고 진행해주시면 좋을 것 같습니다!
 
 백엔드 진행
 

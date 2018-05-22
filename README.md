@@ -8,6 +8,7 @@
         2.(본인의유저이름) / HufsLikelion 을 C9에 클론한다.
         3. 거기서 작업을 한다.
         4. 작업을 완료하면
+            1. git switch back_end 아니면 git switch front_end
             1. git add .
             2. git commit -m "원하는 메세지"
             3. git push origin master:(브랜치 이름 (master, front_end, back_end)) 

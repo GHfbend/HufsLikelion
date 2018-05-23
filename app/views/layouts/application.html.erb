@@ -14,12 +14,6 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-<<<<<<< HEAD
-    
-    <!-- trex 텍스트 편집기 -->
-      <link rel="stylesheet" type="text/css" href="trix.css">
-      <script type="text/javascript" src="trix.js"></script>
-=======
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
@@ -28,22 +22,25 @@
   integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
   crossorigin="anonymous"></script>
   
->>>>>>> upstream/master
+    
+    <!-- trex 텍스트 편집기 -->
+      <link rel="stylesheet" type="text/css" href="trix.css">
+      <script type="text/javascript" src="trix.js"></script>
   </head>
 
   <body>
     
-<!--   devise login header 
+<!--   devise login header -->
   
-    #<p class="notice"><%= notice %></p>
-      #<p class="alert"><%= alert %></p>
-      #<%if user_signed_in?%>
-      #  <%=current_user.email%>
-      #  <%=link_to 'LOG OUT', destroy_user_session_path, method: :delete%>
-      #<%else%>
-      #  <%=link_to 'SIGN UP', new_user_registration_path%>
-      #  <%=link_to 'LOG IN', new_user_session_path%>
-      #<%end%>-->
+    <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+      <%if user_signed_in?%>
+        <%=current_user.email%>
+        <%=link_to 'LOG OUT', destroy_user_session_path, method: :delete%>
+      <%else%>
+        <%=link_to 'SIGN UP', new_user_registration_path%>
+        <%=link_to 'LOG IN', new_user_session_path%>
+      <%end%>
       
     <%= yield %>
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

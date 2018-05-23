@@ -4,6 +4,21 @@
 제목: <%= @tip. title %> <br>
 내용: <%= simple_format(@tip.content)%> <br>
 
+댓글 <br>
+  <%@tip.tipcomment.each do |x| %>
+    <%= x.user_email %> : <%= x.content%><br>
+   <%end%>
+   
+댓글 작성하기 
+    <form action="/tip/writecomment" method="post">
+        <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+          <textarea class="form-control" name="content"></textarea>
+          <input type="hidden" name="user_email" value="<%= current_user.email%>">
+          <input type="hidden" name="tip_id" value="<%=@tip.id%>">
+          <button type="submit" value="작성하기">댓글</button>
+    </form>
+
+
 <a href = "/tip/edit/<%= @tip.id %>">수정</a>
 <a href = "/tip/destroy/<%= @tip.id %>">삭제</a><br>
 

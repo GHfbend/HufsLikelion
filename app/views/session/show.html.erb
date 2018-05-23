@@ -4,6 +4,21 @@
 제목: <%= @session. title %> <br>
 내용: <%= simple_format(@session.content)%> <br>
 
+댓글 <br>
+  <%@session.sessioncomment.each do |x| %>
+    <%= x.user_email %> : <%= x.content%><br>
+   <%end%>
+   
+댓글 작성하기 
+    <form action="/session/writecomment" method="post">
+        <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+          <textarea class="form-control" name="content"></textarea>
+          <input type="hidden" name="user_email" value="<%= current_user.email%>">
+          <input type="hidden" name="session_id" value="<%=@session.id%>">
+          <button type="submit" value="작성하기">댓글</button>
+    </form>
+
+
 <a href = "/session/edit/<%= @session.id %>">수정</a>
 <a href = "/session/destroy/<%= @session.id %>">삭제</a><br>
 

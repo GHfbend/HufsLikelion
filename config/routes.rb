@@ -23,6 +23,8 @@ Rails.application.routes.draw do
 
   get 'qna/destroy/:id' => 'qna#destroy'
   
+  post 'qna/writecomment' => 'qna#writecomment'
+  
   #수업 시간 자료 게시판 라우팅
   get 'session/index'
 
@@ -37,6 +39,8 @@ Rails.application.routes.draw do
   post 'session/update/:id' => 'session#update'
 
   get 'session/destroy/:id' => 'session#destroy'
+  
+  post 'session/writecomment' => 'session#writecomment'
   
   
   #꿀팁 계시판 라우팅
@@ -54,6 +58,8 @@ Rails.application.routes.draw do
 
   get 'tip/destroy/:id' => 'tip#destroy'
   
+  post 'tip/writecomment' => 'tip#writecomment'
+  
 
   #퀴즈 게시판 라우팅
   get 'quiz/index'
@@ -69,6 +75,8 @@ Rails.application.routes.draw do
   post 'quiz/update/:id' => 'quiz#update'
 
   get 'quiz/destroy/:id' => 'quiz#destroy'
+  
+  post 'quiz/writecomment' => 'quiz#writecomment'
   
   #슬랙 알림장 라우팅
   post 'private/slack_create' => 'private#slack_create'

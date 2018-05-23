@@ -42,4 +42,14 @@ class TipController < ApplicationController
     @tip.destroy
     redirect_to '/tip/index'
   end
+  
+  def writecomment
+    @comment = Tipcomment.new
+    @comment.content = params[:content]
+    @comment.tip_id = params[:tip_id]
+    @comment.user_email = params[:user_email]
+    @comment.save
+    redirect_to '/tip/index'
+  end
+  
 end

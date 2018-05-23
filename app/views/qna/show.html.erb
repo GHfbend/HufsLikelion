@@ -4,6 +4,21 @@
 제목: <%= @qna. title %> <br>
 내용: <%= simple_format(@qna.content)%> <br>
 
+댓글 <br>
+  <%@qna.qnacomment.each do |x| %>
+    <%= x.user_email %> : <%= x.content%><br>
+   <%end%>
+   
+댓글 작성하기 
+    <form action="/qna/writecomment" method="post">
+        <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+          <textarea class="form-control" name="content"></textarea>
+          <input type="hidden" name="user_email" value="<%= current_user.email%>">
+          <input type="hidden" name="qna_id" value="<%=@qna.id%>">
+          <button type="submit" value="작성하기">댓글</button>
+    </form>
+
+
 <a href = "/qna/edit/<%= @qna.id %>">수정</a>
 <a href = "/qna/destroy/<%= @qna.id %>">삭제</a><br>
 

@@ -1,60 +1,517 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-ul{
-    margin-top:50px;
-    display:flex;
-    float:right;
-}
 
-li{
-    list-style-type:none;
-    margin-left:30px;
-    font-size:20px;
-}
+@import url('https://fonts.googleapis.com/css?family=Permanent+Marker');
+// xml용 폰트 임포트
 
-.logo{
-    width:150px;
-    height:150px;
+//폰트 임의로 배달의 민족 폰트 적용 필요시 다른 폰트로 교체 가능
+@font-face {
+    src : url("/BMJUA_otf.otf");
+    font-family: "jua";
 }
+// //모든 곳에 폰트를 배달의 민족 폰트로 적용
+// *{
+//   font-family: "jua";
+// }
 
-.nav{
-    height:150px;
-}
-
-.content-text{
-    margin-top:200px;
-}
-
-.content{
-    height:600px;
-}
-
+//body 모든 백그라운드 컬러를 black으로 지정 !important을 사용하여 미적용 방지
 body{
-    background-color:black;
+    background-color:black!important;
 }
 
-* {
-    color:white;
+//
+.divide40 {
+  width: 100%;
+  height: 40px;
 }
 
-.title{
-    font-size:35px;
-    float:right;
-    margin-bottom:100px;
+.divide60 {
+  width: 100%;
+  height: 60px;
 }
 
-.font-yellow{
-    font-size:25px;
-    color:yellow;
+.divide80 {
+  width: 100%;
+  height: 80px;
 }
 
-.font-blue{
-    font-size:25px;
-    color:blue;
+//
+
+html, body {
+  position: relative;
+  height: 100%;
+  color: #fff;
+  text-shadow: 0 1px 3px rgba(0,0,0,.5);
+  overflow: auto;
+  padding: 0;
+  margin: 0;
+  width: 100%;
 }
 
-h2,h3{
-    margin-top:50px;
-    text-align:center;
+.site-wrapper {
+  text-align: center;
+  font-family: "jua";
+}
+
+
+
+//cover페이지 css시작
+.nav{
+  height:750px;
+  width:100%;
+}
+.index-text{
+  background-image: url('/lion1.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  height:750px;
+  background-size: 110% 110%;
+	-webkit-animation: moving 6s ease;
+	-moz-animation: moving 6s ease;
+	animation: moving 6s ease;
+	animation-fill-mode: forwards;
+}
+
+@-webkit-keyframes moving {
+	0% {
+		background-position: 500% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+@-moz-keyframes moving {
+	0% {
+		background-position: 500% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+@keyframes moving {
+	0% {
+		background-position: 500% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+//왼쪽 사자 그림
+
+.index-text>.writing{
+  //라이팅 xml 테스트
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding-top:50px;
+  padding-left:50px;
+	
+	svg {
+		max-width: 45rem;
+		width: 100%;
+		height: auto;
+		fill: none;
+		stroke: white;
+		stroke-width: 10;
+		
+		tspan > tspan {
+			stroke-dasharray: 1500;
+			stroke-dashoffset: -1500;
+			
+			@for $i from 1 through 15 {
+				
+				&:nth-of-type(#{$i}) {
+					animation: draw 300ms #{$i * 150}ms forwards;
+				}
+			}
+		}
+	}
+  @keyframes draw {
+	  100% {
+		  stroke-dashoffset: 0;
+	  }
+  }
+  //라이팅 테스트 끝 ---- 하단부는 자룡이형 원본
+  // padding-top:50px;
+  // padding-left:50px;
+  // text-align:left;
+  // color:#ffd966 ;
+  // font-size:30px;
+}//사자 그림 위에 글자
+
+
+//xml서클 테스트
+.index-top {
+	position: relative;
+	z-index: -1;
+	display: inline-block;
+	align-items: center;
+	justify-content: center;
+	min-height: 10vh;
+	background-color: black;
+}
+
+.loader {
+	max-width: 1000rem;
+	width: 500px;
+	height: auto;
+	stroke-linecap: round;
+}
+
+circle {
+	fill: none;
+	stroke-width: 2;
+	animation-name: preloader;
+	animation-duration: 8s;
+	animation-iteration-count: 1;
+	animation-timing-function: ease-in-out;
+	animation-fill-mode: forwards;
+  transform-origin: 170px 170px;
+	will-change: transform;
+
+	&:nth-of-type(1) {
+		stroke-dasharray: 550px;
+	}
+
+	&:nth-of-type(2) {
+		stroke-dasharray: 500px;
+	}
+
+	&:nth-of-type(3) {
+		stroke-dasharray: 450px;
+	}
+
+// 	&:nth-of-type(4) {
+// 		stroke-dasharray: 300px;
+// 	}
+
+	@for $i from 1 through 3 {
+		&:nth-of-type(#{$i}) {
+			animation-delay: -#{$i * 0.3}s;
+		}
+	}
+}
+
+@keyframes preloader {
+	60% {
+		transform: rotate(360deg);
+	}
+}
+
+span {
+	color: #FFFAFA;
+	position: absolute;
+	left: 0;
+	text-align: center;
+	top: 40%;
+	width: 100%;
+}
+
+//텍스트 이벤트
+@keyframes textevent {
+	0% {
+		text-shadow: 0 0 50px #fff;
+		letter-spacing: 1px;
+		opacity: 0.2;
+		// transform: rotateY(-45deg);
+	}
+	30% {
+		text-shadow: 0 0 1px #fff;
+		letter-spacing: 2px;
+		opacity: 1;
+		transform: rotateY(0deg);
+	}
+	85% {
+		text-shadow: 0 0 0 #fff;
+		opacity: 1;
+		transform: rotateY(0deg) translateZ(100px);
+	}
+	100% {
+		text-shadow: 0 0 0 #fff;
+		opacity: 1;
+		transform: translateZ(130px);
+	}
+}
+
+  h1 {
+    font-size: 3em;
+    color: hsla(0,0,0,0);
+    style: preserve-3d;
+    animation: textevent 6s ease-in-out;
+    animation-fill-mode: forwards;
+  }
+//텍스트 이벤트 끝
+
+//xml서클 테스트 끝 ---- 하단부는 자룡이형 원본
+// .index-top{
+//   height:650px;
+// }//오른쪽에 원그림
+
+
+.index-bottom{
+  height:200px;
+}//오른쪽 원 그림 밑에 글자들 길이
+
+li {
+  display: inline-flex;
+}
+
+ul {
+  list-style: none;
+}
+ul.index-ul  {
+  height:200px;
+  display: flex;
+  list-style: none;
+  align-items: center;
+  justify-content: center;
+}//오른쪽 원 그림 밑에 글자들 정렬 - ul
+
+li.index-li{
+  margin-left:15px;
+  margin-right:15px;
+  font-size:30px;
+}////오른쪽 원 그림 밑에 글자들 정렬 -li
+
+a {
+	position: relative;
+	color: white;
+	text-decoration: none;
+	text-transform: uppercase;
+	
+	&::after {
+		content: '';
+		position: absolute;
+		left: 50%;
+		bottom: 0;
+		transform: translateX(-50%) scaleX(0);
+		transform-origin: 50% 50%;
+		width: 80%;
+		height: 2px;
+		background-color: rgba(255,255,255,0.8);
+		transition: transform 250ms;
+	}
+	
+	&:hover {
+		
+		&::after {
+			transform: translateX(-50%) scaleX(1);
+		}
+	}
+}
+//cover페이지 css끝
+
+//멋사 소개 css시작
+.introduce{
+  height: 750px;
+  padding: 50px;
+}
+
+.introduce>h2{
+  font-size: 40px;
+  text-align: left;
+  font-family: "jua";
+  color: #3cb371;
+}
+
+ul.intro-ul{
+  font-size: 25px;
+  text-align: left;
+  font-family: "jua";
+  color: #ffffff;
+  list-style: none;
+}
+
+ul.intro-ul2{
+  font-size: 25px;
+  text-align: right;
+  font-family: "jua";
+  color: #ffffff;
+  list-style: none;
+}
+
+.hufslion-intro{
+  font-size: 40px;
+  font-family: "jua";
+  color: #ffa500;
+}
+
+
+.photo0{
+  width: 150px; 
+  height: 150px;
+}//likelion로고와 hufslion로고
+
+.photo4{
+  height:350px;
+}//life
+.col-sm-8>h3{
+  font-size: 50px;
+  text-align: center;
+  font-family: "jua";
+  color: #ffffff;
+}//HACK YOUR LIFE 미완료
+
+
+// .introduce>h4{
+//   font-size: 40px;
+//   text-align: right;
+//   font-family: "jua";
+//   color: #ffa500;
+// }
+
+//멋사 소개 css끝
+
+//roadmap css 시작
+.roadmap, .stars, .twinkling{
+  height: 750px;
+  width: 100%;
+}
+  //별css 키프레임 시작
+  @keyframes move-twink-back {
+    from {background-position:0 0;}
+    to {background-position:-10000px 5000px;}
+  }
+  @-webkit-keyframes move-twink-back {
+      from {background-position:0 0;}
+      to {background-position:-10000px 5000px;}
+  }
+  @-moz-keyframes move-twink-back {
+      from {background-position:0 0;}
+      to {background-position:-10000px 5000px;}
+  }
+  @-ms-keyframes move-twink-back {
+      from {background-position:0 0;}
+      to {background-position:-10000px 5000px;}
+  }
+  //별css 키프레임 끝
+//별 css 시작
+.stars {
+  background: url('/stars.png') repeat top center;
+  z-index:-2;
+}
+
+.twinkling{
+  background:transparent url('/twinkling.png') repeat top center;
+  z-index:-1;
+  -moz-animation:move-twink-back 500s linear infinite;
+  -ms-animation:move-twink-back 500s linear infinite;
+  -o-animation:move-twink-back 500s linear infinite;
+  -webkit-animation:move-twink-back 500s linear infinite;
+  animation:move-twink-back 500s linear infinite;
+}
+
+.whitelinerodd{
+  height:475px;
+}
+
+.whitelinereven1{
+  height:275px;
+}
+
+//별 css 끝
+//roadmap css 끝
+
+
+
+//staff css시작
+.staff{
+  padding:50px;
+  height:750px;
+  background-image:url('/color_lion.png');
+  background-size: cover;
+  color: #FFFAFA;
+}
+
+.staff>h4{
+  font-size:30px;
+  text-align:center;
+  font-family: "jua";
+  color:#ffd966;
+}
+
+.photo2 {
+    width: 250px; height: 250px;
+    object-fit: cover;
+    object-position: top;
+    border-radius: 50%;
+}
+
+.rounded-circle {
+  border: solid #DAA520;
+  border-width: 5px;
+}
+
+//staff css 끝
+
+// //잠시확인
+// .space{
+//   height: 20px;
+//   padding: 20px;
+// }
+
+
+// 6기 멤버 css 시작
+.sixth {
+  padding:30px;
+  height:750px;
+  background-image:url('/lion_color.png');
+  background-size: cover;
+  color: #FFFAFA;
+}
+
+.sixth>h4{
+  font-size:30px;
+  text-align:center;
+  font-family: "jua";
+  color:#ffd966;
+}
+.photo3 {
+    width: 200px; height: 200px;
+    object-fit: cover;
+    object-position: top;
+    border-radius: 50%;
+}
+// 6기 멤버 css 끝
+
+
+//footer css시작
+footer {
+  bottom:0;
+  padding: 32px;
+  background-color: #2d2d30;
+  color: #f5f5f5;
+}
+
+footer>p{
+  display:inline;
+}
+
+.footerLogo{
+  height:80px;
+  width:80px;
+}
+
+.footerLogo-face{
+  height:30px;
+  width:50px;
+}
+
+.footerLogo-e{
+  height:40px;
+  width:50px;
+}
+ul.footer-ul{
+  height:50px;
+  display: flex;
+  list-style: none;
+
+}
+
+li.footer-li{
+  padding-left:50px;
+  margin-bottom:30px;
 }

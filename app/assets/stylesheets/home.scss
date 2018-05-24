@@ -1,7 +1,6 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-
 @import url('https://fonts.googleapis.com/css?family=Permanent+Marker');
 // xml용 폰트 임포트
 
@@ -52,6 +51,7 @@ html, body {
 .site-wrapper {
   text-align: center;
   font-family: "jua";
+  overflow:hidden;
 }
 
 
@@ -61,6 +61,7 @@ html, body {
   height:750px;
   width:100%;
 }
+
 .index-text{
   background-image: url('/lion1.png');
   background-repeat: no-repeat;
@@ -69,13 +70,27 @@ html, body {
   background-size: 110% 110%;
 	-webkit-animation: moving 6s ease;
 	-moz-animation: moving 6s ease;
-	animation: moving 6s ease;
+// 	background-blend-mode: lighten;
+	animation: moving 6s ease, reveal 6s ease;
 	animation-fill-mode: forwards;
 }
-
+@keyframes reveal {
+  0% {
+    -webkit-filter: opacity(0%);
+    -moz-filter: opacity(0%);
+    -ms-filter: opacity(0%);
+    filter: opacity(0%);
+  }
+  100% {
+    -webkit-filter: opacity(100%);
+    -moz-filter: opacity(100%);
+    -ms-filter: opacity(100%);
+    filter: opacity(100%);
+  }
+}
 @-webkit-keyframes moving {
 	0% {
-		background-position: 500% 50%;
+		background-position: 300% 50%;
 	}
 	100% {
 		background-position: 0% 50%;
@@ -84,7 +99,7 @@ html, body {
 
 @-moz-keyframes moving {
 	0% {
-		background-position: 500% 50%;
+		background-position: 300% 50%;
 	}
 	100% {
 		background-position: 0% 50%;
@@ -93,21 +108,23 @@ html, body {
 
 @keyframes moving {
 	0% {
-		background-position: 500% 50%;
+		background-position: 300% 0%;
 	}
 	100% {
 		background-position: 0% 50%;
 	}
 }
 //왼쪽 사자 그림
-
-.index-text>.writing{
+.writing{
   //라이팅 xml 테스트
+  z-index: 1000;
+  position: absolute;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	padding-top:50px;
   padding-left:50px;
+  width: 58%;
 	
 	svg {
 		max-width: 45rem;
@@ -134,12 +151,6 @@ html, body {
 		  stroke-dashoffset: 0;
 	  }
   }
-  //라이팅 테스트 끝 ---- 하단부는 자룡이형 원본
-  // padding-top:50px;
-  // padding-left:50px;
-  // text-align:left;
-  // color:#ffd966 ;
-  // font-size:30px;
 }//사자 그림 위에 글자
 
 
@@ -214,13 +225,13 @@ span {
 @keyframes textevent {
 	0% {
 		text-shadow: 0 0 50px #fff;
-		letter-spacing: 1px;
+		letter-spacing: 2px;
 		opacity: 0.2;
 		// transform: rotateY(-45deg);
 	}
 	30% {
 		text-shadow: 0 0 1px #fff;
-		letter-spacing: 2px;
+		letter-spacing: 3px;
 		opacity: 1;
 		transform: rotateY(0deg);
 	}
@@ -310,7 +321,7 @@ a {
   padding: 50px;
 }
 
-.introduce>h2{
+.likelion-intro{
   font-size: 40px;
   text-align: left;
   font-family: "jua";
@@ -347,7 +358,22 @@ ul.intro-ul2{
 
 .photo4{
   height:350px;
-}//life
+  animation: crazy 10s linear infinite;
+}//hack your life 중앙 PNG
+@keyframes crazy {
+  0% {
+    -webkit-filter: hue-rotate(0deg);
+    -moz-filter: hue-rotate(0deg);
+    -ms-filter: hue-rotate(0deg);
+    filter: hue-rotate(0deg);
+  }
+  100% {
+    -webkit-filter: hue-rotate(360deg);
+    -moz-filter: hue-rotate(360deg);
+    -ms-filter: hue-rotate(360deg);
+    filter: hue-rotate(360deg);
+  }
+}
 .col-sm-8>h3{
   font-size: 50px;
   text-align: center;
@@ -368,7 +394,7 @@ ul.intro-ul2{
 //roadmap css 시작
 .roadmap, .stars, .twinkling{
   height: 750px;
-  width: 100%;
+  overflow: hidden;
 }
   //별css 키프레임 시작
   @keyframes move-twink-back {
@@ -403,16 +429,148 @@ ul.intro-ul2{
   -webkit-animation:move-twink-back 500s linear infinite;
   animation:move-twink-back 500s linear infinite;
 }
+//별 css 끝
 
 .whitelinerodd{
-  height:475px;
+  height:50px;
 }
 
-.whitelinereven1{
-  height:275px;
+.whitelinereven{
+  height:50px;
 }
 
-//별 css 끝
+.rec {
+  // border: white solid;
+  animation: liner 10s ease-in-out infinite;
+}
+
+//거지같은 별자리 시작
+@keyframes liner {
+  0% {
+    -webkit-filter: opacity(0%);
+    -moz-filter: opacity(0%);
+    -ms-filter: opacity(0%);
+    filter: opacity(0%);
+  }
+  50% {
+    -webkit-filter: opacity(100%);
+    -moz-filter: opacity(100%);
+    -ms-filter: opacity(100%);
+    filter: opacity(100%);
+  }
+  100% {
+    -webkit-filter: opacity(0%);
+    -moz-filter: opacity(0%);
+    -ms-filter: opacity(0%);
+    filter: opacity(0%);
+  }
+}
+/* 태훈이 원본
+.test1-1 {
+  padding: 100px 0;
+  transform: skew(0deg, 45deg);
+  margin-top: 25%;  
+  border-top: white solid; 
+}
+.test2-2 {
+  padding: 100px 0;
+  transform: skew(0deg, -30deg);
+  margin-top: 22%;  
+  border-top: white solid;
+}
+
+.test1-3 {
+  padding: 100px 0;
+  transform: skew(0deg, 45deg);
+  margin-top: 23%;  
+  border-top: white solid;
+}
+
+.test2-4 {
+  padding: 100px 0;
+  transform: skew(0deg, -43deg);
+  margin-top: 16%;  
+  border-top: white solid;
+}
+.test1-5 {
+  padding: 100px 0;
+  transform: skew(0deg, 60deg);
+  margin-top: 15%;  
+  border-top: white solid; 
+}*/
+
+.hei{
+  height : 300px;
+}
+
+.hei2{
+  height:150;
+}
+
+.test1-1 {
+  transform: skew(0deg, 46.5deg);
+  
+  border-top: white solid; 
+}
+.test2-2 {
+  transform: skew(0deg, -19deg);
+  margin-bottom:4%;
+  border-top: white solid;
+}
+
+.test1-3 {
+  transform: skew(0deg, 45deg);
+  margin-top:4%;
+  border-top: white solid;
+}
+
+.test2-4 {
+  transform: skew(0deg, -36.5deg);
+  border-top: white solid;
+}
+.test1-5 {
+  transform: skew(0deg, 56deg);
+  border-top: white solid; 
+}
+
+.lineartext1{
+  position:related;
+  bottom:340px;
+  right: 150px;
+
+}
+
+.lineartext2{
+  position:related;
+}
+
+.lineartext3{
+  position:related;
+  bottom: 220px;
+}
+
+.lineartext4{
+  position:related;
+  bottom:40px;
+}
+
+.lineartext5{
+  position:related;
+  bottom: 250px;
+  left: 50px;
+
+}
+
+.lineartext1>h1 , .lineartext2>h1 , .lineartext3>h1 , .lineartext4>h1 , .lineartext5>h1{
+  margin-top: 120px;
+  margin-left: 100px;
+  color:white;
+  font-size:20px;
+}
+
+
+
+//거지같은 별자리 끝
 //roadmap css 끝
 
 
@@ -486,13 +644,24 @@ footer {
   color: #f5f5f5;
 }
 
-footer>p{
-  display:inline;
-}
+// footer>p{
+//   display: inline;
+//   
+// }
+  
+  .text1{
+    display: inline;
+    font-family: "jua";
+    font-size: 20px;
+   
+  }
+
+
 
 .footerLogo{
   height:80px;
   width:80px;
+
 }
 
 .footerLogo-face{
@@ -512,6 +681,9 @@ ul.footer-ul{
 }
 
 li.footer-li{
+  //display: inline;
   padding-left:50px;
   margin-bottom:30px;
+ 
 }
+

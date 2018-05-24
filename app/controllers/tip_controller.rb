@@ -50,5 +50,13 @@ class TipController < ApplicationController
     @comment.save
     redirect_to '/tip/index'
   end
+      
+  def destroycomment
+    @qna = params[:tip_id]
+    destroycomment = Tipcomment.find(params[:tipcomment_id])
+    destroycomment.destroy
+    
+    redirect_back(fallback_location: root_path)
+  end  
   
 end

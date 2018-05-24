@@ -1,5 +1,5 @@
 class SessionController < ApplicationController
-   def index
+  def index
     @sessions = Session.all
   end
 
@@ -49,7 +49,19 @@ class SessionController < ApplicationController
     @comment.session_id = params[:session_id]
     @comment.user_email = params[:user_email]
     @comment.save
-    redirect_to '/session/index'
+    
+    redirect_back(fallback_location: root_path)
   end
   
+  def destroycomment
+    @session = params[:session_id]
+    destroycomment = Sessioncomment.find(params[:sessioncomment_id])
+    destroycomment.destroy
+    
+    redirect_back(fallback_location: root_path)
+    
+    
+  end
+  
+
 end

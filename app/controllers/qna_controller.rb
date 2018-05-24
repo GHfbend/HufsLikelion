@@ -41,8 +41,6 @@ class QnaController < ApplicationController
 
   def destroy
       @qna = Qna.find(params[:id])
-      allqnacomments = @qna.Qnacomment.all
-      allqnacomments.destroy
       @qna.destroy
       redirect_to '/qna/index'
   end
@@ -53,7 +51,8 @@ class QnaController < ApplicationController
     @comment.qna_id = params[:qna_id]
     @comment.user_email = params[:user_email]
     @comment.save
-    redirect_to "/qna/show/#{@comment.qna_id}"
+    
+    redirect_back(fallback_location: root_path)
   end
   
     
@@ -61,7 +60,8 @@ class QnaController < ApplicationController
     @qna = params[:qna_id]
     destroycomment = Qnacomment.find(params[:qnacomment_id])
     destroycomment.destroy
-    redirect_to "/qna/index"
+    
+    redirect_back(fallback_location: root_path)
   end  
   
 end

@@ -5,10 +5,10 @@
 내용: <%= simple_format(@qna.content)%> <br>
 
 댓글 <br>
-  <%@qna.qnacomments.each do |x| %>
+  <%@qna.qnacomment.each do |x| %>
     <%= x.user_email %> : <%= x.content%>
       <%if user_signed_in? && x.user_email == current_user.email%>
-        <a href="/qna/destroycomment/<%=x.id%>">delete</a><br>      
+        <a href="/qna/destroycomment/<%=x.id%>">댓글삭제</a><br>      
       <%else%>
     <%end%>
   <%end%>

@@ -51,5 +51,14 @@ class QuizController < ApplicationController
     @comment.save
     redirect_to '/quiz/index'
   end
+      
+  def destroycomment
+    @qna = params[:quiz_id]
+    destroycomment = Quizcomment.find(params[:quizcomment_id])
+    destroycomment.destroy
+    
+    redirect_back(fallback_location: root_path)
+  end  
+  
   
 end

@@ -46,6 +46,8 @@ Rails.application.routes.draw do
   
   post 'session/writecomment' => 'session#writecomment'
   
+  get 'session/destroycomment/:sessioncomment_id' => 'session#destroycomment'
+  
   
   #꿀팁 계시판 라우팅
   get 'tip/index'
@@ -64,6 +66,8 @@ Rails.application.routes.draw do
   
   post 'tip/writecomment' => 'tip#writecomment'
   
+  get 'tip/destroycomment/:tipcomment_id' => 'tip#destroycomment'
+
 
   #퀴즈 게시판 라우팅
   get 'quiz/index'
@@ -81,6 +85,8 @@ Rails.application.routes.draw do
   get 'quiz/destroy/:id' => 'quiz#destroy'
   
   post 'quiz/writecomment' => 'quiz#writecomment'
+  
+  get 'quiz/destroycomment/:quizcomment_id' => 'quiz#destroycomment'
   
   #슬랙 알림장 라우팅
   post 'private/slack_create' => 'private#slack_create'

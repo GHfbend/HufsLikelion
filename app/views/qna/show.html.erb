@@ -5,10 +5,15 @@
 내용: <%= simple_format(@qna.content)%> <br>
 
 댓글 <br>
-  <%@qna.qnacomment.each do |x| %>
-    <%= x.user_email %> : <%= x.content%><br>
-   <%end%>
-   
+  <%@qna.qnacomments.each do |x| %>
+    <%= x.user_email %> : <%= x.content%>
+      <%if user_signed_in? && x.user_email == current_user.email%>
+        <a href="/qna/destroycomment/<%=x.id%>">delete</a><br>      
+      <%else%>
+    <%end%>
+  <%end%>
+  
+ <%if user_signed_in?%>
 댓글 작성하기 
     <form action="/qna/writecomment" method="post">
         <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
@@ -17,9 +22,13 @@
           <input type="hidden" name="qna_id" value="<%=@qna.id%>">
           <button type="submit" value="작성하기">댓글</button>
     </form>
+    <%else%>
+    <%end%>
 
+<%if user_signed_in? && @qna.user_email == current_user.email%>
+    <a href = "/qna/edit/<%= @qna.id %>">수정</a>
+    <a href = "/qna/destroy/<%= @qna.id %>">삭제</a><br>
+  <%else%>
+<%end%>
 
-<a href = "/qna/edit/<%= @qna.id %>">수정</a>
-<a href = "/qna/destroy/<%= @qna.id %>">삭제</a><br>
-
-<a href = "/qna/index">목록</a>
+<br><a href = "/qna/index">목록</a>

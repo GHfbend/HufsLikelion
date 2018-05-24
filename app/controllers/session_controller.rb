@@ -35,7 +35,7 @@ class SessionController < ApplicationController
     
     redirect_to "/session/show/#{@session.id}"
     
-    end
+  end
 
   def destroy
     @session = Session.find(params[:id])

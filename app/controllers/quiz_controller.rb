@@ -35,7 +35,7 @@ class QuizController < ApplicationController
     
     redirect_to "/quiz/show/#{@quiz.id}"
     
-    end
+  end
 
   def destroy
     @quiz = Quiz.find(params[:id])

@@ -34,8 +34,7 @@ class TipController < ApplicationController
     @tip.save
     
     redirect_to "/tip/show/#{@tip.id}"
-    
-    end
+  end
 
   def destroy
     @tip = Tip.find(params[:id])

@@ -25,6 +25,10 @@ Rails.application.routes.draw do
   
   post 'qna/writecomment' => 'qna#writecomment'
   
+  get 'qna/destroycomment/:qnacomment_id' => 'qna#destroycomment'
+  
+  # get 'qna/'
+  
   #수업 시간 자료 게시판 라우팅
   get 'session/index'
 

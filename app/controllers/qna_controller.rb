@@ -4,6 +4,9 @@ class QnaController < ApplicationController
   end
 
   def new
+    unless user_signed_in?
+      redirect_to "/users/sign_in"
+    end
   end
 
   def create
@@ -12,7 +15,6 @@ class QnaController < ApplicationController
     @qna.content = params[:content]
     @qna.user_email = params[:user_email]
     @qna.save
-    
     redirect_to '/qna/index'
     
   end
@@ -22,7 +24,7 @@ class QnaController < ApplicationController
   end
   
   def edit
-    @qna = Qna.find(params[:id])
+     @qna = Qna.find(params[:id])
   end 
   
   
@@ -35,12 +37,14 @@ class QnaController < ApplicationController
     
     redirect_to "/qna/show/#{@qna.id}"
     
-    end
+  end
 
   def destroy
-    @qna = Qna.find(params[:id])
-    @qna.destroy
-    redirect_to '/qna/index'
+      @qna = Qna.find(params[:id])
+      allqnacomments = @qna.Qnacomment.all
+      allqnacomments.destroy
+      @qna.destroy
+      redirect_to '/qna/index'
   end
   
   def writecomment
@@ -49,7 +53,15 @@ class QnaController < ApplicationController
     @comment.qna_id = params[:qna_id]
     @comment.user_email = params[:user_email]
     @comment.save
-    redirect_to '/qna/index'
+    redirect_to "/qna/show/#{@comment.qna_id}"
   end
+  
+    
+  def destroycomment
+    @qna = params[:qna_id]
+    destroycomment = Qnacomment.find(params[:qnacomment_id])
+    destroycomment.destroy
+    redirect_to "/qna/index"
+  end  
   
 end

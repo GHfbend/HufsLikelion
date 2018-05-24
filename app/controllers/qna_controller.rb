@@ -52,6 +52,8 @@ class QnaController < ApplicationController
     @comment.user_email = params[:user_email]
     @comment.save
     
+    
+    
     redirect_back(fallback_location: root_path)
   end
   

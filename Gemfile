@@ -9,6 +9,8 @@ gem 'rails_db'
 
 # 로그인 기능 devise + devise 부트스트랩
 
+
+
 gem 'devise'
 
 gem 'devise-bootstrap-views'
@@ -58,6 +60,11 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
 
+group :production do
+  gem 'pg' , '~>0.21'
+  gem 'rails_12factor'
+  
+end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 

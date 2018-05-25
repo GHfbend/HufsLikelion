@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class QnaCommentTest < ActiveSupport::TestCase
+class QnacommentTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

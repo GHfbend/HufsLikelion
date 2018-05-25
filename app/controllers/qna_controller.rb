@@ -42,4 +42,14 @@ class QnaController < ApplicationController
     @qna.destroy
     redirect_to '/qna/index'
   end
+  
+  def writecomment
+    @comment = Qnacomment.new
+    @comment.content = params[:content]
+    @comment.qna_id = params[:qna_id]
+    @comment.user_email = params[:user_email]
+    @comment.save
+    redirect_to '/qna/index'
+  end
+  
 end

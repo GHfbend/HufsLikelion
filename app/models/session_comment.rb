@@ -1,2 +1,0 @@
-class SessionComment < ApplicationRecord
-end

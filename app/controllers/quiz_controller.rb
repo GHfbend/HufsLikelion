@@ -42,4 +42,14 @@ class QuizController < ApplicationController
     @quiz.destroy
     redirect_to '/quiz/index'
   end
+  
+  def writecomment
+    @comment = Quizcomment.new
+    @comment.content = params[:content]
+    @comment.quiz_id = params[:quiz_id]
+    @comment.user_email = params[:user_email]
+    @comment.save
+    redirect_to '/quiz/index'
+  end
+  
 end

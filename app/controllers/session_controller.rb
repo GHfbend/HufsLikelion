@@ -42,4 +42,14 @@ class SessionController < ApplicationController
     @session.destroy
     redirect_to '/session/index'
   end
+  
+  def writecomment
+    @comment = Sessioncomment.new
+    @comment.content = params[:content]
+    @comment.session_id = params[:session_id]
+    @comment.user_email = params[:user_email]
+    @comment.save
+    redirect_to '/session/index'
+  end
+  
 end

@@ -5,9 +5,6 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-#게시판 모양 
-gem 'trix', '~> 0.11.1'
-
 gem 'rails_db'
 
 # 로그인 기능 devise + devise 부트스트랩

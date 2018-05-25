@@ -4,6 +4,21 @@
 제목: <%= @quiz. title %> <br>
 내용: <%= simple_format(@quiz.content)%> <br>
 
+댓글 <br>
+  <%@quiz.quizcomment.each do |x| %>
+    <%= x.user_email %> : <%= x.content%><br>
+   <%end%>
+   
+댓글 작성하기 
+    <form action="/quiz/writecomment" method="post">
+        <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+          <textarea class="form-control" name="content"></textarea>
+          <input type="hidden" name="user_email" value="<%= current_user.email%>">
+          <input type="hidden" name="quiz_id" value="<%=@quiz.id%>">
+          <button type="submit" value="작성하기">댓글</button>
+    </form>
+
+
 <a href = "/quiz/edit/<%= @quiz.id %>">수정</a>
 <a href = "/quiz/destroy/<%= @quiz.id %>">삭제</a><br>
 

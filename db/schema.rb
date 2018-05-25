@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180521052117) do
+ActiveRecord::Schema.define(version: 20180523142136) do
 
   create_table "notices", force: :cascade do |t|
     t.string "user_name"
@@ -20,9 +20,13 @@ ActiveRecord::Schema.define(version: 20180521052117) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "qna_comments", force: :cascade do |t|
+  create_table "qnacomments", force: :cascade do |t|
+    t.string "content"
+    t.string "user_email"
+    t.integer "qna_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["qna_id"], name: "index_qnacomments_on_qna_id"
   end
 
   create_table "qnas", force: :cascade do |t|
@@ -33,9 +37,13 @@ ActiveRecord::Schema.define(version: 20180521052117) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "quiz_comments", force: :cascade do |t|
+  create_table "quizcomments", force: :cascade do |t|
+    t.string "content"
+    t.string "user_email"
+    t.integer "quiz_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["quiz_id"], name: "index_quizcomments_on_quiz_id"
   end
 
   create_table "quizzes", force: :cascade do |t|
@@ -46,9 +54,13 @@ ActiveRecord::Schema.define(version: 20180521052117) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "session_comments", force: :cascade do |t|
+  create_table "sessioncomments", force: :cascade do |t|
+    t.string "content"
+    t.string "user_email"
+    t.integer "session_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["session_id"], name: "index_sessioncomments_on_session_id"
   end
 
   create_table "sessions", force: :cascade do |t|
@@ -59,9 +71,13 @@ ActiveRecord::Schema.define(version: 20180521052117) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "tip_comments", force: :cascade do |t|
+  create_table "tipcomments", force: :cascade do |t|
+    t.string "content"
+    t.string "user_email"
+    t.integer "tip_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["tip_id"], name: "index_tipcomments_on_tip_id"
   end
 
   create_table "tips", force: :cascade do |t|

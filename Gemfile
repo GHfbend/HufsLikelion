@@ -6,14 +6,10 @@ git_source(:github) do |repo_name|
 end
 
 #게시판 모양 
-gem 'trix', '~> 0.11.1'
 
 gem 'rails_db'
 
 # 로그인 기능 devise + devise 부트스트랩
-
-
-
 gem 'devise'
 
 gem 'devise-bootstrap-views'
@@ -21,7 +17,7 @@ gem 'devise-bootstrap-views'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.6'
 # Use sqlite3 as the database for Active Record
-#gem 'sqlite3'
+gem 'sqlite3'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
 # Use SCSS for stylesheets

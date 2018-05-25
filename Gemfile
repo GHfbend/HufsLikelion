@@ -6,6 +6,7 @@ git_source(:github) do |repo_name|
 end
 
 
+-gem 'trix', '~> 0.11.1'
 gem 'rails_db'
 
 # 로그인 기능 devise + devise 부트스트랩

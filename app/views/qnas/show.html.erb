@@ -1,0 +1,49 @@
+<div class="container">
+
+    <h1><%= @qna. title %></h1>
+    
+    <div style="text-align:right">
+        <%="조회수: #{@qna.view_count}" %> / 작성 일자 : <%=@qna.created_at.strftime("%Y.%m.%d %H:%M") %> / 작성자 : <%=@qna.user_email%><br><br>
+    </div>
+
+    <div class="well">
+        <%= simple_format(@qna.content)%> <br>
+    </div>
+    
+    <%if user_signed_in? && @qna.user_email == current_user.email%>
+        <%=link_to '수정', edit_qna_path%>
+        <%=link_to '삭제', qna_path, method: :delete%>
+      <%else%>
+    <%end%>
+    
+    <% if user_signed_in? %>
+            <%= form_with model: @qnacomment, url: qna_comments_path(@qna) do |f| %>
+              <%= f.hidden_field :user_email, value: current_user.email%>
+              <%= f.hidden_field :qna_id, value: @qna.id %>
+              <%= f.text_field :content %>
+              <%= f.submit %>
+          <%end%>
+      <%end%>
+      
+    <strong>댓글</strong><br><br>
+        <% if @qnacomments.empty? %>
+        <% else%>
+            <table class="table table-fit">
+            <% i = 1 %>
+                <%@qnacomments.each do |x| %>
+                    <tr>
+                        <td width = "5%"><%=i%></td>
+                        <td width = "70%"><%=x.content %></td> 
+                        <td width = "20%"><center> by. <%=x.user_email%></center></td>
+                        <%if user_signed_in? && current_user.email == x.user_email %>
+                            <td width = "5%"><%= link_to "삭제", qna_comment_path(@qna, x), method: :delete, remote: true %></td>
+                        <%else%>
+                            <td width = "5%"></td>
+                        <%end%>
+                    </tr>
+            <% i = i + 1 %>
+                <%end%>
+            </table>
+            <hr>
+        <%end%>
+</div>

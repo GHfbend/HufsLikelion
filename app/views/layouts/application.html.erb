@@ -2,10 +2,9 @@
 <html>
   <head lang="ko">
     <title>Hufslikelion</title>
-    <%= csrf_meta_tags %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-
+    <%= csrf_meta_tags %>
     
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -14,7 +13,12 @@
   <!--src="https://code.jquery.com/jquery-3.3.1.min.js"-->
   <!--integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="-->
   <!--crossorigin="anonymous"></script>-->
- 
+  
+ <!--텍스트 에디터-->
+
+  <link rel="stylesheet" type="text/css" href="trix.css">
+  <script type="text/javascript" src="trix.js"></script>
+  
   </head>
 
   <body>

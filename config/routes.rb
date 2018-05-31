@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   
-  devise_for :users
+  devise_for :users, :controllers => { registrations: 'registrations' }
+  
   root 'home#index'
   
   get 'home/index'
@@ -26,6 +27,13 @@ Rails.application.routes.draw do
   post 'qna/writecomment' => 'qna#writecomment'
   
   get 'qna/destroycomment/:qnacomment_id' => 'qna#destroycomment'
+  
+  get 'qna/reply/:id' => 'qna#reply'
+  
+  post 'qna/createreply' => 'qna#createreply'
+  
+  delete 'qna/destroyreply/:id' => 'qna#destroyreply'
+  
   
   # get 'qna/'
   
@@ -90,5 +98,8 @@ Rails.application.routes.draw do
   
   #슬랙 알림장 라우팅
   post 'private/slack_create' => 'private#slack_create'
+  
+  
+
   
 end

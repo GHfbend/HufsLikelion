@@ -19,6 +19,9 @@ class QuizController < ApplicationController
 
   def show
     @quiz = Quiz.find(params[:id])
+    
+    @quiz.view_count = @quiz.view_count + 1
+    @quiz.save
   end
   
   def edit

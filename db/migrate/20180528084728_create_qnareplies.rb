@@ -1,9 +1,10 @@
-class CreateQnacomments < ActiveRecord::Migration[5.1]
+class CreateQnareplies < ActiveRecord::Migration[5.1]
   def change
-    create_table :qnacomments do |t|
+    create_table :qnareplies do |t|
       
-      t.string :content
+      t.string :title
       t.string :user_email
+      t.text :content
       t.belongs_to :qna, index: true, foreign_key: true
 
       t.timestamps

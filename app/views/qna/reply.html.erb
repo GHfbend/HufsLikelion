@@ -1,7 +1,7 @@
-<h1>새 퀴즈 작성</h1>
-<p>퀴즈를 작성하는 페이지 입니다</p>
+<h1>새 답변 작성</h1>
+<p>답변을 작성하는 페이지 입니다</p>
 
-<form action="/quiz/create" method="post">
+<form action="/qna/createreply" method="post">
     <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
     제목: <input type="string" name="title"><br>
     내용
@@ -10,5 +10,6 @@
                 
     </trix-editor>
           <input type="hidden" name="user_email" value="<%= current_user.email%>">
+          <input type="hidden" name="qna_id" value="<%=@qna.id%>">
           <input type="submit" value="작성">
 </form>

@@ -19,6 +19,9 @@ class TipController < ApplicationController
 
   def show
     @tip = Tip.find(params[:id])
+    
+    @tip.view_count = @tip.view_count + 1
+    @tip.save
   end
   
   def edit
@@ -52,7 +55,7 @@ class TipController < ApplicationController
   end
       
   def destroycomment
-    @qna = params[:tip_id]
+    @show = params[:tip_id]
     destroycomment = Tipcomment.find(params[:tipcomment_id])
     destroycomment.destroy
     

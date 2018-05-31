@@ -1,11 +1,13 @@
 <h1>글 내용</h1>
 <p>글 내용을 보여주는 페이지 입니다.</p>
 
+<%="조회수: #{@quiz.view_count}" %> / 작성일자 : <%=@quiz.created_at.strftime("%Y.%m.%d %H:%M") %> / 작성자 : <%=@quiz.user_email%><br><br>
+
 제목: <%= @quiz. title %> <br>
 내용: <%= simple_format(@quiz.content)%> <br>
 
 댓글 <br>
-  <%@quiz.quizcomment.each do |x| %>
+  <%@quiz.quizcomments.each do |x| %>
     <%= x.user_email %> : <%= x.content%>
       <%if user_signed_in? && x.user_email == current_user.email%>
         <a href="/quiz/destroycomment/<%=x.id%>">댓글삭제</a><br>      

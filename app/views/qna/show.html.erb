@@ -1,34 +1,52 @@
-<h1>글 내용</h1>
-<p>글 내용을 보여주는 페이지 입니다.</p>
-
-제목: <%= @qna. title %> <br>
-내용: <%= simple_format(@qna.content)%> <br>
-
-댓글 <br>
-  <%@qna.qnacomment.each do |x| %>
-    <%= x.user_email %> : <%= x.content%>
-      <%if user_signed_in? && x.user_email == current_user.email%>
-        <a href="/qna/destroycomment/<%=x.id%>">댓글삭제</a><br>      
-      <%else%>
-    <%end%>
+<div class="container">
+  <h1><%= @qna. title %></h1>
+  <div style="text-align:right">
+    <%="조회수: #{@qna.view_count}" %> / 작성 일자 : <%=@qna.created_at.strftime("%Y.%m.%d %H:%M") %> / 작성자 : <%=@qna.user_email%><br><br>
+  </div>
+  <div class="well">
+    <%= simple_format(@qna.content)%> <br>
+  </div>
+  <hr>
+  답글 <a href="/qna/reply/<%=@qna.id%>">작성</a><br>
+  
+    <% @qna.qnareplies.each do |x|%>
+    <div class="well">
+      제목: <strong><%= x.title %></strong> / 작성자 : <%=x.user_email%> <br>
+      <%= simple_format(x.content) %>
+        <%if user_signed_in? && x.user_email == current_user.email%>
+          <a href = '/qna/destroyreply/<%=x.id%>', data-method = 'delete'>답글삭제</a>
+        <%else%>
+        <%end%>
+      </div>
+      <%end%>
+    
+  <hr>
+      
+    댓글 <br>
+      <%@qna.qnacomments.each do |x| %>
+        <%= x.user_email %> : <%= x.content%>
+          <%if user_signed_in? && x.user_email == current_user.email%>
+            <a href="/qna/destroycomment/<%=x.id%>">댓글삭제</a>      
+          <%else%>
+        <%end%><br>
+      <%end%>
+      
+     <%if user_signed_in?%>
+        <form action="/qna/writecomment" method="POST" data-remote="true">
+            <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+              <textarea class="form-control" name="content"></textarea>
+              <input type="hidden" name="user_email" value="<%= current_user.email%>">
+              <input type="hidden" name="qna_id" value="<%=@qna.id%>">
+              <button type="submit" value="작성하기">댓글</button>
+        </form>
+        <%else%>
+        <%end%>
+  
+  <%if user_signed_in? && @qna.user_email == current_user.email%>
+      <a href = "/qna/edit/<%= @qna.id %>">수정</a>
+      <a href = "/qna/destroy/<%= @qna.id %>">삭제</a><br>
+    <%else%>
   <%end%>
   
- <%if user_signed_in?%>
-댓글 작성하기 
-    <form action="/qna/writecomment" method="post">
-        <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-          <textarea class="form-control" name="content"></textarea>
-          <input type="hidden" name="user_email" value="<%= current_user.email%>">
-          <input type="hidden" name="qna_id" value="<%=@qna.id%>">
-          <button type="submit" value="작성하기">댓글</button>
-    </form>
-    <%else%>
-    <%end%>
-
-<%if user_signed_in? && @qna.user_email == current_user.email%>
-    <a href = "/qna/edit/<%= @qna.id %>">수정</a>
-    <a href = "/qna/destroy/<%= @qna.id %>">삭제</a><br>
-  <%else%>
-<%end%>
-
-<br><a href = "/qna/index">목록</a>
+  <br><a href = "/qna/index">목록</a>
+</div>

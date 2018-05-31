@@ -1,4 +1,6 @@
 class Session < ApplicationRecord
-    has_many :sessioncomment, dependent: :destroy
+    mount_uploader :s3_file, S3Uploader
+    has_many :sessioncomments, dependent: :destroy
     belongs_to :user, required: false
+    
 end

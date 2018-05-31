@@ -43,10 +43,10 @@
     
         <5/21 완료>
         1. 각 컨트롤러 CRUD (인건) (완료)
-        
+        2. 각 모델 Comment (승윤) comment 기능 완성
         <5/24 전까지>
-        2. 각 모델 Comment (승윤) comment 기능 완성 
-        3. 댓글 ajax, 대댓글 (현우)
+         
+        3. 댓글 ajax, 대댓글 (현우) 
         4. Slack.api (인건) (완료) --> 현재 백엔드 c9에서만 작동 확인 가능합니다.
         5. QnA, 댓글에 사진 달기 (은진)
         6. 게시글 작성 권한 / 댓글 작성 권한 / 작성자만 수정/삭제 (은진)
@@ -65,3 +65,13 @@
         1.Challenge 게시판 어떻게 해요?
         2. 각 게시판 업로드 방식 정하기 / 첨부파일 기능
         3. 회원가입 승인? likelion 계정만 가입 가능?
+
+
+댓글 <br>
+  <%@session.sessioncomments.each do |x| %>
+    <%= x.user_email %> : <%= x.content%>
+      <%if user_signed_in? && x.user_email == current_user.email%>
+        <a href='/session/destroycomment/<%=x.id%>'>댓글삭제</a><br>
+      <%else%>
+    <%end%>
+   <%end%>

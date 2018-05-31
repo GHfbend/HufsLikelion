@@ -21,6 +21,10 @@ class QnaController < ApplicationController
 
   def show
     @qna = Qna.find(params[:id])
+    
+    @qna.view_count = @qna.view_count + 1
+    @qna.save
+
   end
   
   def edit
@@ -52,8 +56,6 @@ class QnaController < ApplicationController
     @comment.user_email = params[:user_email]
     @comment.save
     
-    
-    
     redirect_back(fallback_location: root_path)
   end
   
@@ -65,5 +67,30 @@ class QnaController < ApplicationController
     
     redirect_back(fallback_location: root_path)
   end  
+  
+  def reply
+    @qna = Qna.find(params[:id])
+  end
+  
+  def createreply
+    @qna = params[:qna_id]
+    @reply = Qnareply.new
+    @reply.title = params[:title]
+    @reply.qna_id = params[:qna_id]
+    @reply.user_email = params[:user_email]
+    @reply.content = params[:content]
+    @reply.save
+    
+    redirect_to "/qna/show/#{@reply.qna_id}"
+  end
+  
+  def destroyreply
+    reply = Qnareply.find(params[:id])
+    reply.destroy
+    
+    redirect_back(fallback_location: root_path)
+  end
+  
+  
   
 end

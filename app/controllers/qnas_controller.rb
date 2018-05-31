@@ -8,7 +8,10 @@ class QnasController < ApplicationController
 
   def show
     @qnacomment = Qnacomment.new
-    @qnacomments = @qna.qnacomment
+    @qnacomments = @qna.qnacomments
+    
+    @qnareply = Qnareply.new
+    @qnareplies = @qna.qnareplies
     
     @qna.view_count = @qna.view_count + 1
     @qna.save

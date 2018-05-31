@@ -1,0 +1,7 @@
+<%= form_for(@qna) do |f|%>
+    <%= f.text_field :title, label: "제목" %><br>
+    <%= f.text_area :content%>
+    <%= f.hidden_field :user_email, value: current_user.email%>
+    <%= f.hidden_field :qna_id, value: @qna.id%>
+    <%= f.submit "작성"%>
+<% end %>

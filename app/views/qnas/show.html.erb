@@ -15,9 +15,28 @@
         <%=link_to '삭제', qna_path, method: :delete%>
       <%else%>
     <%end%>
+    <br>
+    
+    <%=link_to '작성', new_qnareply_path %>
+    <% @qna.qnareplies.each do |x|%>
+    <div class="well">
+      제목: <strong><%= x.title %></strong> / 작성자 : <%=x.user_email%> <br>
+      <%= simple_format(x.content) %>
+        <%if user_signed_in? && x.user_email == current_user.email%>
+          <a href = '/qna/destroyreply/<%=x.id%>', data-method = 'delete'>답글삭제</a>
+        <%else%>
+        <%end%>
+      </div>
+      <%end%>
     
     <% if user_signed_in? %>
             <%= form_with model: @qnacomment, url: qna_comments_path(@qna) do |f| %>
+              <%= f.hidden_field :user_email, value: current_user.email%>
+              <%= f.hidden_field :qna_id, value: @qna.id %>
+              <%= f.text_field :content %>
+              <%= f.submit %>
+          <%end%>
+          <%= form_for (@qnacomment), url: qna_comments_path(@qna) do |f| %>
               <%= f.hidden_field :user_email, value: current_user.email%>
               <%= f.hidden_field :qna_id, value: @qna.id %>
               <%= f.text_field :content %>

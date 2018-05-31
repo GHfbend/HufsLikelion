@@ -61,7 +61,6 @@ ActiveRecord::Schema.define(version: 20180528084728) do
     t.text "content"
     t.string "user_email"
     t.string "title"
-    t.integer "view_count", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -79,8 +78,6 @@ ActiveRecord::Schema.define(version: 20180528084728) do
     t.string "title"
     t.text "content"
     t.string "user_email"
-    t.string "s3_file"
-    t.integer "view_count", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -98,7 +95,6 @@ ActiveRecord::Schema.define(version: 20180528084728) do
     t.string "title"
     t.text "content"
     t.string "user_email"
-    t.integer "view_count", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

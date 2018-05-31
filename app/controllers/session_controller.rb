@@ -10,6 +10,7 @@ class SessionController < ApplicationController
     @session = Session.new
     @session.title = params[:title]
     @session.content = params[:content]
+    @session.s3_file = params[:input_file]
     @session.user_email = params[:user_email]
     @session.save
     
@@ -19,6 +20,9 @@ class SessionController < ApplicationController
 
   def show
     @session = Session.find(params[:id])
+    
+    @session.view_count = @session.view_count + 1
+    @session.save
   end
   
   def edit
@@ -49,7 +53,6 @@ class SessionController < ApplicationController
     @comment.session_id = params[:session_id]
     @comment.user_email = params[:user_email]
     @comment.save
-    
     redirect_back(fallback_location: root_path)
   end
   

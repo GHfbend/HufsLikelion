@@ -34,6 +34,13 @@ Rails.application.routes.draw do
   
   get 'qna/destroycomment/:qnacomment_id' => 'qna#destroycomment'
   
+  get 'qna/reply/:id' => 'qna#reply'
+  
+  post 'qna/createreply' => 'qna#createreply'
+  
+  delete 'qna/destroyreply/:id' => 'qna#destroyreply'
+  
+  
   # get 'qna/'
   
   #수업 시간 자료 게시판 라우팅
@@ -97,5 +104,8 @@ Rails.application.routes.draw do
   
   #슬랙 알림장 라우팅
   post 'private/slack_create' => 'private#slack_create'
+  
+  
+
   
 end

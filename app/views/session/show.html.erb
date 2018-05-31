@@ -1,17 +1,23 @@
 <h1>글 내용</h1>
 <p>글 내용을 보여주는 페이지 입니다.</p>
 
+<%="조회수: #{@session.view_count}" %> / 작성일자 : <%=@session.created_at.strftime("%Y.%m.%d %H:%M") %>  / 작성자 : <%=@session.user_email%><br><br>
+
 제목: <%= @session. title %> <br>
 내용: <%= simple_format(@session.content)%> <br>
+ <%= image_tag @session.s3_file %><br>
 
 댓글 <br>
-  <%@session.sessioncomment.each do |x| %>
+<p><ul id='sessioncomments'>  
+  <%@session.sessioncomments.each do |x| %>
+    <%= render partial: "session/shows", locals: { post: x} %>
     <%= x.user_email %> : <%= x.content%>
       <%if user_signed_in? && x.user_email == current_user.email%>
         <a href='/session/destroycomment/<%=x.id%>'>댓글삭제</a><br>
       <%else%>
-    <%end%>
-   <%end%>
+      <%end%>
+  <%end%>
+</ul></p>
 
 <%if user_signed_in?%>
   댓글 작성하기 

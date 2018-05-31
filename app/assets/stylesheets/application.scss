@@ -12,5 +12,11 @@
  *
  *= require_tree .
  *= require_self
+ *= require trix
  */
  
+ 
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "devise_bootstrap_views";
+@import "rails_bootstrap_forms";

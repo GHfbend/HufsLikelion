@@ -1,7 +1,13 @@
 <h1>퀴즈 게시판</h1>
 <p>퀴즈와 답변이 이루어질 게시판입니다.</p>
 
-<a href = '/quiz/new'>글 작성하기</a>
+ <a 
+  <% if user_signed_in? %>
+    href = '/quiz/new'
+  <% else %>
+    href = '/users/sign_in'
+  <% end%>
+  >글 작성하기</a>
 
 <table>
     <tr>
@@ -15,7 +21,7 @@
             <td><%=x.id%></td>
             <td><%=x.title%></td>
             <td><%=x.user_email%></td>
-            <td><%=x.created_at%></td>
+            <td><%=x.created_at.strftime("%Y.%m.%d")%></td>
         </tr>
     <% end %>
 </table>

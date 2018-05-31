@@ -5,16 +5,34 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-gem 'rails_db'
+#bootstrap
+gem 'bootstrap-sass', '~> 3.3.7'
 
-# 로그인 기능 devise + devise 부트스트랩
-
-
-
+#user
 gem 'devise'
-
 gem 'devise-bootstrap-views'
 
+gem "bootstrap_form" 
+gem 'tinymce-rails'
+
+
+#게시판 텍스트 에디터
+gem 'trix'
+
+gem 'jquery-rails'
+
+#파일 업로드 (인건) 테스트
+gem "shrine", "~> 2.0"
+gem "aws-sdk-s3", "~> 1.2" # for AWS S3 storage
+
+
+gem 'mini_magick'
+#이미지를 조종
+gem 'fog-aws'
+#aws s3조작할때 쓰는거
+gem 'carrierwave'
+
+gem 'rails_db'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.6'
 # Use sqlite3 as the database for Active Record

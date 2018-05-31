@@ -6,8 +6,15 @@ Rails.application.routes.draw do
   post 'qnas/:qna_id/qnacomments' => 'qnacomments#create', :as => 'qna_comments'
 
   delete 'qnas/:qna_id/qnacomments/:id' => 'qnacomments#destroy', :as => 'qna_comment'
+  
+  get 'qnas/:id/qnareplies' => 'qnareplies#new', :as => 'new_qnareply'
+  
+  post 'qnas/:qna_id/qnareply' => 'qnareplies#create', :as => 'qna_replies'
+
+  delete 'qnas/:qna_id/qnareplies/:id' => 'qnareplies#destroy', :as => 'qna_reply'
 
   devise_for :users
+  
   root 'home#index'
   
   get 'home/index'

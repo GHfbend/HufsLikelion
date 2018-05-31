@@ -1,10 +1,10 @@
 class QnacommentsController < ApplicationController
-def create
+    def create
     @qnacomment = Qnacomment.new(qnacomment)
     @qnacomment.save
     
     redirect_to qna_path(params[:qna_id])
-  end
+    end
 
   def destroy
     @qnacomment = Qnacomment.find(params[:id])

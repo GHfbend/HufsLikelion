@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 20180523142136) do
     t.string "title"
     t.text "content"
     t.string "user_email"
+    t.integer "view_count", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

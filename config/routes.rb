@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
-  
+
+  #qnas
   resources :qnas
+  
+  post 'qnas/:qna_id/qnacomments' => 'qnacomments#create', :as => 'qna_comments'
+
+  delete 'qnas/:qna_id/qnacomments/:id' => 'qnacomments#destroy', :as => 'qna_comment'
 
   devise_for :users
   root 'home#index'

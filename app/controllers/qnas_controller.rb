@@ -7,7 +7,11 @@ class QnasController < ApplicationController
   end
 
   def show
+    @qnacomment = Qnacomment.new
+    @qnacomments = @qna.qnacomment
     
+    @qna.view_count = @qna.view_count + 1
+    @qna.save
   end
 
   def new
@@ -24,7 +28,8 @@ class QnasController < ApplicationController
   end
 
   def update
-    @memo.update(qna_params)
+    @qna.update(qna_params)
+    redirect_to qnas_path
   end
 
   def destroy

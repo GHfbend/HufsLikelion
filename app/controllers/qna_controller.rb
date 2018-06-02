@@ -1,10 +1,17 @@
 class QnaController < ApplicationController
   def index
-    @qnas = Qna.all
+    # @qnas = Qna.all.page(params[:page]).per(10)
+    if params[:search]
+      @qnas = Qna.search(params[:search]).order("created_at DESC").page(params[:page]).per(10)
+    else
+      @qnas = Qna.all.order(created_at: :DESC).page(params[:page]).per(10)
+    end
+    
   end
 
   def new
     unless user_signed_in?
+    
       redirect_to "/users/sign_in"
     end
   end
@@ -14,6 +21,14 @@ class QnaController < ApplicationController
     @qna.title = params[:title]
     @qna.content = params[:content]
     @qna.user_email = params[:user_email]
+    
+    
+    # 3.times do |h|
+    #   tag = hashtag_params[:hashtags_attributes]["#{h}"]["title"]
+    #   a=Hashtag.find_or_create_by(title: tag)
+    #   @memo.hashtags << a
+    # end
+    
     @qna.save
     redirect_to '/qna/index'
     

@@ -1,6 +1,10 @@
 <div class="container">
 <h1>질문 게시판</h1>
 <p>질문과 답변이 이루어질 게시판입니다.</p>
+<%= form_tag(qnas_path, :method => "get", id: "search-form") do %>
+    <%= text_field_tag :search, params[:search], placeholder: "Search Posts"%>
+    <%= submit_tag "Search"%>
+<%end%>
 
  <a 
   <% if user_signed_in? %>
@@ -42,4 +46,5 @@
             <% end %>
         </table>
     </div>
+    <%= paginate @qnas %>
 </div>

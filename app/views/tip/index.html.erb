@@ -24,4 +24,5 @@
             <td><%=x.created_at.strftime("%Y.%m.%d")%></td>
         </tr>
     <% end %>
+    <%= paginate @tips %>
 </table>

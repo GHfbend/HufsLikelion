@@ -1,6 +1,6 @@
 class QuizController < ApplicationController
    def index
-    @quizzes = Quiz.all
+    @quizzes = Quiz.all.page(params[:page]).per(10)
   end
 
   def new

@@ -1,6 +1,9 @@
 <h1>수업 자료 게시판</h1>
 <p>수업 자료와 답변이 이루어질 게시판입니다.</p>
-
+<%= form_tag(session_path, :method => "get", id: "search-form") do %>
+    <%= text_field_tag :search, params[:search], placeholder: "Search Posts"%>
+    <%= submit_tag "Search"%>
+<%end%>
   <a 
   <% if user_signed_in? %>
     href = '/session/new'
@@ -25,4 +28,5 @@
             S3 File: <%= image_tag x.s3_file %><br>
         </tr>
     <% end %>
+    <%= paginate @sessions %>
 </table>

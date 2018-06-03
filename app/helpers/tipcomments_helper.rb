@@ -1,0 +1,2 @@
+module TipcommentsHelper
+end

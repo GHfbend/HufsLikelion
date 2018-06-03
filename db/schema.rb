@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(version: 20180601003955) do
   create_table "qnacomments", force: :cascade do |t|
     t.string "content"
     t.string "user_email"
+    t.string "user_name"
     t.integer "qna_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -44,6 +45,7 @@ ActiveRecord::Schema.define(version: 20180601003955) do
     t.string "title"
     t.string "user_email"
     t.text "content"
+    t.string "user_name"
     t.integer "qna_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -54,6 +56,7 @@ ActiveRecord::Schema.define(version: 20180601003955) do
     t.string "title"
     t.text "content"
     t.string "user_email"
+    t.string "user_name"
     t.integer "view_count", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

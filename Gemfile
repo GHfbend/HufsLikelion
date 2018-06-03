@@ -7,7 +7,7 @@ end
 gem 'kaminari'
 #bootstrap
 gem 'bootstrap-sass', '~> 3.3.7'
-
+gem 'bootstrap_form'
 #user
 gem 'devise'
 gem 'devise-bootstrap-views'

@@ -1,4 +1,5 @@
-class TipController < ApplicationController
+class TipsController < ApplicationController
+    before_action :authenticate_user!, except: [:index, :show]
     before_action :set_tip, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -15,10 +16,8 @@ class TipController < ApplicationController
   end
 
   def create
-    
-    @tip = Tip.new(tip_params)
+    @tip = Tip.new
     @tip.save
-    
     if @tip.save
       redirect_to @tip
     else
@@ -27,7 +26,8 @@ class TipController < ApplicationController
   end
 
   def show
-    @tip = Tip.find(params[:id])
+    @tipcomment = Tipcomment.new
+    @tipcomments = @tip.tipcomments
     @tip.view_count = @tip.view_count + 1
     @tip.save
   end
@@ -50,5 +50,6 @@ class TipController < ApplicationController
    def set_tip
     @tip = Tip.find(params[:id])
    end
+
 
 end

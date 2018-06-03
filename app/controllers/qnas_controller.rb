@@ -50,4 +50,8 @@ class QnasController < ApplicationController
     @qna = Qna.find(params[:id])
   end
   
+  def qna_params
+      params.require(:qna).permit(:user_email, :user_name, :title, :content)
+  end
+  
 end

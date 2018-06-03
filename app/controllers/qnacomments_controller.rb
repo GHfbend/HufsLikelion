@@ -14,6 +14,6 @@ class QnacommentsController < ApplicationController
   
   private
    def qnacomment
-    params.require(:qnacomment).permit(:content, :user_email, :qna_id)
+    params.require(:qnacomment).permit(:content, :user_email, :qna_id, :user_name)
    end
 end

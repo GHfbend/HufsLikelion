@@ -5,7 +5,7 @@ class SessionController < ApplicationController
     else
       @qnas = Qna.all.order(created_at: :DESC).page(params[:page]).per(10)
     end
-    # @sessions = Session.all.page(params[:page]).per(10)
+    @sessions = Session.all.page(params[:page]).per(10)
   end
 
   def new

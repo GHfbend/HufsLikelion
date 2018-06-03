@@ -1,19 +1,6 @@
 Rails.application.routes.draw do
-
-  #qnas
-  resources :qnas
   
-  post 'qnas/:qna_id/qnacomments' => 'qnacomments#create', :as => 'qna_comments'
-
-  delete 'qnas/:qna_id/qnacomments/:id' => 'qnacomments#destroy', :as => 'qna_comment'
-  
-  get 'qnas/:id/qnareplies' => 'qnareplies#new', :as => 'new_qnareply'
-  
-  post 'qnas/:qna_id/qnareply' => 'qnareplies#create', :as => 'qna_replies'
-
-  delete 'qnas/:qna_id/qnareplies/:id' => 'qnareplies#destroy', :as => 'qna_reply'
-
-  devise_for :users
+  devise_for :users, :controllers => { registrations: 'registrations' }
   
   root 'home#index'
   
@@ -22,33 +9,27 @@ Rails.application.routes.draw do
   #회원 페이지
   get 'private/index'
   
-  #질문 게시판 라우팅
-  get 'qna/index'
+  #qnas 페이지
+  resources :qnas do
+    resources :qnacomments, only: [:create, :destroy]
+    resources :qnareplies, only: [:new, :create, :destroy]
+  end
+  
+  # 팁
 
-  get 'qna/new'
+  get 'tips/index'
 
-  post 'qna/create' => 'qna#create'
-  
-  get 'qna/show/:id' => 'qna#show'
-  
-  get 'qna/edit/:id' => 'qna#edit'
+  get 'tips/new'
 
-  post 'qna/update/:id' => 'qna#update'
+  get 'tips/create'
 
-  get 'qna/destroy/:id' => 'qna#destroy'
+  get 'tips/edit'
+
+  get 'tips/update'
+
+  get 'tips/destroy'
+
   
-  post 'qna/writecomment' => 'qna#writecomment'
-  
-  get 'qna/destroycomment/:qnacomment_id' => 'qna#destroycomment'
-  
-  get 'qna/reply/:id' => 'qna#reply'
-  
-  post 'qna/createreply' => 'qna#createreply'
-  
-  delete 'qna/destroyreply/:id' => 'qna#destroyreply'
-  
-  
-  # get 'qna/'
   
   #수업 시간 자료 게시판 라우팅
   get 'session/index'
@@ -71,23 +52,27 @@ Rails.application.routes.draw do
   
   
   #꿀팁 계시판 라우팅
-  get 'tip/index'
-
-  get 'tip/new'
-
-  post 'tip/create' => 'tip#create'
   
-  get 'tip/show/:id' => 'tip#show'
-  
-  get 'tip/edit/:id' => 'tip#edit'
+  resources :tips do
+    resources :tipcomments, only: [:create, :destroy]
+  end
+  # get 'tip/index'
 
-  post 'tip/update/:id' => 'tip#update'
+  # get 'tip/new'
 
-  get 'tip/destroy/:id' => 'tip#destroy'
+  # post 'tip/create' => 'tip#create'
   
-  post 'tip/writecomment' => 'tip#writecomment'
+  # get 'tip/show/:id' => 'tip#show'
   
-  get 'tip/destroycomment/:tipcomment_id' => 'tip#destroycomment'
+  # get 'tip/edit/:id' => 'tip#edit'
+
+  # post 'tip/update/:id' => 'tip#update'
+
+  # get 'tip/destroy/:id' => 'tip#destroy'
+  
+  # post 'tip/writecomment' => 'tip#writecomment'
+  
+  # get 'tip/destroycomment/:tipcomment_id' => 'tip#destroycomment'
 
 
   #퀴즈 게시판 라우팅

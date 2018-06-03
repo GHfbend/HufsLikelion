@@ -1,0 +1,42 @@
+<h1><%=@tip.title%></h1>
+<hr>
+<h2><%=@tip.user_email%></h2>
+
+
+
+<% if @tip.user_email == current_user.email %>
+    
+    <%= link_to '수정', edit_tip_path%>
+    <%= link_to '삭제', tip_path, method: :delete%>
+<% else%>
+<% end%>
+
+
+<hr>
+<div class="well">
+    댓글 작성 창
+    <%#TODO: 댓글 창 완성하기 %>
+    <form action='/tips/:tip_id/tipcomments' method ='post'>
+        <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+        <textarea class="form-control" name="content"></textarea>
+        <input type="hidden" name="user_email" value="<%=current_user.email%>">
+        <input type="hidden" name="tip_id" value="<%=@tip.id%>">
+        <input type="submit" value="SUBMIT">
+    </form>
+    
+</div>
+<hr>
+<div>
+    댓글 보여주는 곳
+    <hr>
+    <%#TODO: 댓글 창 완성하기 %>
+    <%@tip.tipcomments.each do |comment| %>
+        <%= comment.user_email %>: <%=comment.content%>
+         <a href="/tips/:tip_id/tipcomments/:id" data-method ='delete'>delete</a><br>
+    <%end%>
+</div>
+
+
+
+
+

@@ -1,6 +1,11 @@
 class SessionController < ApplicationController
   def index
-    @sessions = Session.all
+    if params[:search]
+      @qnas = Qna.search(params[:search]).order("created_at DESC").page(params[:page]).per(10)
+    else
+      @qnas = Qna.all.order(created_at: :DESC).page(params[:page]).per(10)
+    end
+    @sessions = Session.all.page(params[:page]).per(10)
   end
 
   def new

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180528084728) do
+ActiveRecord::Schema.define(version: 20180601003955) do
 
   create_table "notices", force: :cascade do |t|
     t.string "user_name"
@@ -20,9 +20,21 @@ ActiveRecord::Schema.define(version: 20180528084728) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "punches", force: :cascade do |t|
+    t.integer "punchable_id", null: false
+    t.string "punchable_type", limit: 20, null: false
+    t.datetime "starts_at", null: false
+    t.datetime "ends_at", null: false
+    t.datetime "average_time", null: false
+    t.integer "hits", default: 1, null: false
+    t.index ["average_time"], name: "index_punches_on_average_time"
+    t.index ["punchable_type", "punchable_id"], name: "punchable_index"
+  end
+
   create_table "qnacomments", force: :cascade do |t|
     t.string "content"
     t.string "user_email"
+    t.string "user_name"
     t.integer "qna_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -33,6 +45,7 @@ ActiveRecord::Schema.define(version: 20180528084728) do
     t.string "title"
     t.string "user_email"
     t.text "content"
+    t.string "user_name"
     t.integer "qna_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -43,6 +56,7 @@ ActiveRecord::Schema.define(version: 20180528084728) do
     t.string "title"
     t.text "content"
     t.string "user_email"
+    t.string "user_name"
     t.integer "view_count", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -61,6 +75,7 @@ ActiveRecord::Schema.define(version: 20180528084728) do
     t.text "content"
     t.string "user_email"
     t.string "title"
+    t.integer "view_count", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -78,6 +93,8 @@ ActiveRecord::Schema.define(version: 20180528084728) do
     t.string "title"
     t.text "content"
     t.string "user_email"
+    t.string "s3_file"
+    t.integer "view_count", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -95,6 +112,7 @@ ActiveRecord::Schema.define(version: 20180528084728) do
     t.string "title"
     t.text "content"
     t.string "user_email"
+    t.integer "view_count", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

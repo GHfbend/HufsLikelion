@@ -3,7 +3,12 @@ class QnasController < ApplicationController
   before_action :set_qna, only: [:show, :edit, :update, :destroy]
   
   def index
-    @qnas = Qna.all
+    if params[:search]
+      @qnas = Qna.search(params[:search]).order("created_at DESC").page(params[:page]).per(10)
+    else
+      @qnas = Qna.all.order(created_at: :DESC).page(params[:page]).per(10)
+    end
+    # @qnas = Qna.all
   end
 
   def show
@@ -46,6 +51,7 @@ class QnasController < ApplicationController
   end
   
   def qna_params
-      params.require(:qna).permit(:user_email, :title, :content)
+      params.require(:qna).permit(:user_email, :user_name, :title, :content)
   end
+  
 end

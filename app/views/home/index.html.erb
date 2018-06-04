@@ -1,4 +1,37 @@
-<div class="site-wrapper">
+<script>//화면 연습 중
+    $(function(){
+      $("#intro").hide();
+      $('#roadmap').hide();
+      $('#staff1').hide();
+      $('#mem').hide();
+      
+      $(window).on('scroll' , function(){
+        console.log($(window).scrollTop() );
+        if($(window).scrollTop() > 90){
+          $("#intro").addClass('animated fadeInLeft');
+          $("#intro").show();
+        }
+        
+        if($(window).scrollTop() > 850) {
+          $('#roadmap').addClass('animated fadeInRight');
+          $('#roadmap').show();
+        }
+        
+        if($(window).scrollTop() > 1600) {
+          $('#staff1').show();
+          $('#staff1').addClass('animated fadeInDown');
+        }
+        
+        if($(window).scrollTop() > 2300) {
+          $('#mem').show();
+          $('#mem').addClass('animated fadeInDown');
+        }
+      });
+    });
+</script>
+
+
+<div class="site-wrapper" style ="background-color:black">
   <!-- 커버1 배너와 외대멋사 커버로 이동하는 인트로 커버입니다. -->
   <div class="container-fluid row nav">
     <div class = "col-md-7 index-text"></div>
@@ -45,15 +78,14 @@
   <!--/커버1-->
   <!--커버2 간단한 멋사 소개-->
   
-  
-  <div class="container-fluid introduce stars">
+  <div id = "intro" class="container-fluid introduce stars">
     <div class="twinkling">
       <h2 class="likelion-intro">LIKELION </h2>
       <div class="intro-top" > 
         <ul class = "intro-ul">
-          <br>130 COLLEGES<br>
-          1,916 STUDENTS<br>
-          MAKE 579 SERVICES<br>
+          <br><b>130</b> COLLEGES<br>
+          <b>1,916 STUDENTS</b><br>
+          MAKE <b class = "counter">579</b> SERVICES<br>
         </ul>
       </div>
     
@@ -81,7 +113,7 @@
   <!--/커버2-->
   
   <!--커버3 멋사6기 로드맵-->
-  <div class="container-fluid roadmap stars">
+  <div id = "roadmap" class="container-fluid roadmap stars">
     <div class = "twinkling">
       <div class = "hei row">
         <div class = "col-md-7 lineartext2 ">
@@ -96,38 +128,22 @@
         <div class = "col-md-5 lineartext4 ">
           <h1 style = "color:#ffd966;">2TH SEMESTER</h1>
         </div>
-
         
       </div>
       
-      
-      
       <div class = "row hei">
-        <div class = "rec col-md-1 whitelinereven test1-1">
-        </div>
-      
-        <div class = "rec col-md-3 whitelinerodd test2-2">
-          
-        </div>
-      
-        <div class = "rec col-md-2 whitelinereven test1-3">
-          
-        </div>
-        
-        <div class = "rec col-md-4 whitelinerodd test2-4">
-          
-        </div>
-        
-        <div class = "rec col-md-2 whitelinereven test1-5">
-          
-        </div>
+        <div class = "rec col-md-1 whitelinereven test1-1"> </div>
+        <div class = "rec col-md-3 whitelinerodd test2-2"> </div>
+        <div class = "rec col-md-2 whitelinereven test1-3"></div>
+        <div class = "rec col-md-4 whitelinerodd test2-4"></div>
+        <div class = "rec col-md-2 whitelinereven test1-5"></div>
       </div>   
       
       <div class = "row hei2">
         <div class = "col-md-4 lineartext1 ">
           <h1 style = "color:#ffd966;">HUFSLION 6TH 3.16ING</h1>
         </div>
-\
+
         <div class = "col-md-6 lineartext3" style="padding-right: 400px;">
           <h1><p style = "color:#ffd966;">SUMMER VACTIO</p>
               SESSION - SATURDAY PM 7<br>
@@ -139,18 +155,17 @@
         <div class = "col-md-1 lineartext5">
           <h1 style = "color:#ffd966;">NEXT</h1>
         </div>
-        
       </div>
     </div>
   </div>
   <!--/커버3-->
   
   <!--커버4 스탭 멤버-->
-  <div class="container-fluid staff">
+  <div id = "staff1" class="container-fluid staff">
     <h4>HUFS STAFF</h4>
     <div class = "divide40"></div>
     
-    <div class = "col-md-12 row">
+    <div class = "col-md-12 row ">
       <div class = "col-md-2"></div>
       <div class = "col-md-4">
         <img class = "photo2 rounded-circle" src = "/flying.PNG">
@@ -188,7 +203,7 @@
   
 
   <!--커버5 6기 멤버-->
-  <div class="container-fluid sixth">
+  <div id = "mem" class="container-fluid sixth">
     <div class = "divide40"></div>
     <h4>HUFSLION 6TH</h4>
     <div class = "divide40"></div>

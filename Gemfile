@@ -25,7 +25,6 @@ gem 'jquery-rails'
 gem "shrine", "~> 2.0"
 gem "aws-sdk-s3", "~> 1.2" # for AWS S3 storage
 
-
 gem 'mini_magick'
 #이미지를 조종
 gem 'fog-aws'
@@ -36,7 +35,9 @@ gem 'rails_db'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.6'
 # Use sqlite3 as the database for Active Record
+
 # gem 'sqlite3'
+
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
 # Use SCSS for stylesheets

@@ -1,45 +1,54 @@
 class TipController < ApplicationController
-   def index
-    @tips = Tip.all
+    before_action :set_tip, only: [:show, :edit, :update, :destroy]
+
+  def index
+    if params[:search]
+      @tips = Tip.search(params[:search]).order("created_at DESC").page(params[:page]).per(10)
+    else
+      @tips = Tip.all.order(created_at: :DESC).page(params[:page]).per(10)
+    end
+    # @tips = Tip.all.page(params[:page]).per(10)
   end
 
   def new
+    @tip=Tip.new
   end
 
   def create
-    @tip = Tip.new
-    @tip.title = params[:title]
-    @tip.content = params[:content]
-    @tip.user_email = params[:user_email]
+    
+    @tip = Tip.new(tip_params)
     @tip.save
     
-    redirect_to '/tip/index'
-    
+    if @tip.save
+      redirect_to @tip
+    else
+      render :new
+    end
   end
 
   def show
     @tip = Tip.find(params[:id])
+    @tip.view_count = @tip.view_count + 1
+    @tip.save
   end
   
   def edit
-    @tip = Tip.find(params[:id])
   end 
   
   
   def update
-    @tip = Tip.find(params[:id])
-    @tip.title = params[:title]
-    @tip.content = params[:content]
-    @tip.user_email = params[:user_email] 
-    @tip.save
-    
-    redirect_to "/tip/show/#{@tip.id}"
-    
-    end
+    @tip.update(tip_params)
+    redirect_to @tip
+  end
 
   def destroy
-    @tip = Tip.find(params[:id])
     @tip.destroy
-    redirect_to '/tip/index'
+    redirect_to tips_path
   end
+  
+   private
+   def set_tip
+    @tip = Tip.find(params[:id])
+   end
+
 end

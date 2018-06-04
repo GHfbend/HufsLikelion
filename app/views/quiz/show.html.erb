@@ -1,10 +1,36 @@
 <h1>글 내용</h1>
 <p>글 내용을 보여주는 페이지 입니다.</p>
 
+<%="조회수: #{@quiz.view_count}" %> / 작성일자 : <%=@quiz.created_at.strftime("%Y.%m.%d %H:%M") %> / 작성자 : <%=@quiz.user_email%><br><br>
+
 제목: <%= @quiz. title %> <br>
 내용: <%= simple_format(@quiz.content)%> <br>
 
-<a href = "/quiz/edit/<%= @quiz.id %>">수정</a>
-<a href = "/quiz/destroy/<%= @quiz.id %>">삭제</a><br>
+댓글 <br>
+  <%@quiz.quizcomments.each do |x| %>
+    <%= x.user_email %> : <%= x.content%>
+      <%if user_signed_in? && x.user_email == current_user.email%>
+        <a href="/quiz/destroycomment/<%=x.id%>">댓글삭제</a><br>      
+      <%else%>
+    <%end%>
+  <%end%>
+  
+ <%if user_signed_in?%>
+댓글 작성하기 
+    <form action="/quiz/writecomment" method="post">
+        <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+          <textarea class="form-control" name="content"></textarea>
+          <input type="hidden" name="user_email" value="<%= current_user.email%>">
+          <input type="hidden" name="quiz_id" value="<%=@quiz.id%>">
+          <button type="submit" value="작성하기">댓글</button>
+    </form>
+    <%else%>
+    <%end%>
 
-<a href = "/quiz/index">목록</a>
+<%if user_signed_in? && @quiz.user_email == current_user.email%>
+    <a href = "/quiz/edit/<%= @quiz.id %>">수정</a>
+    <a href = "/quiz/destroy/<%= @quiz.id %>">삭제</a><br>
+  <%else%>
+<%end%>
+
+<br><a href = "/quiz/index">목록</a>

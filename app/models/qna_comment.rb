@@ -1,2 +1,0 @@
-class QnaComment < ApplicationRecord
-end

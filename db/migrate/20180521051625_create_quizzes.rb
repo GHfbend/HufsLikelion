@@ -2,10 +2,12 @@ class CreateQuizzes < ActiveRecord::Migration[5.1]
   def change
     create_table :quizzes do |t|
       
-      t.string :title
       t.text :content
       t.string :user_email
-
+      t.string :title
+      
+      t.integer :view_count,default: 0
+      
       t.timestamps
     end
   end

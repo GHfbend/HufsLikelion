@@ -1,0 +1,172 @@
+[33mcommit 54687b16eb21679f005346bc588b5a2608485685[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m
+Author: kujarung <rnwk34@nate.com>
+Date:   Thu May 24 05:45:16 2018 +0000
+
+    프론트 index작업 beta
+
+[33mcommit b56138d50e53b53b42d015491f5504fdb78f97ef[m
+Merge: ee38537 18b6b0d
+Author: GHfbend <37010455+GHfbend@users.noreply.github.com>
+Date:   Wed May 23 14:00:02 2018 +0900
+
+    Merge pull request #6 from GHfbend/back_end
+    
+    Back end
+
+[33mcommit 18b6b0debd62af539e3a385719c29b21a054f657[m
+Merge: 7b93ceb ee38537
+Author: GHfbend <37010455+GHfbend@users.noreply.github.com>
+Date:   Wed May 23 13:59:23 2018 +0900
+
+    Merge branch 'master' into back_end
+
+[33mcommit ee385377a2fb9c9c68ee47f2efb91d02f8dd7543[m
+Merge: 504d6a4 f66ab61
+Author: kujarung <37537297+kujarung@users.noreply.github.com>
+Date:   Wed May 23 12:06:54 2018 +0900
+
+    Merge pull request #5 from GHfbend/front-end
+    
+    프론트 작업
+
+[33mcommit f66ab61509f2aa4b71657bec3d13a2bd20938fd5[m[33m ([m[1;31morigin/front-end[m[33m)[m
+Author: kujarung <rnwk34@nate.com>
+Date:   Wed May 23 03:04:19 2018 +0000
+
+    프론트 작업
+
+[33mcommit 7b93ceb24e7e4a05d16d9ae29338aa275bcfc615[m[33m ([m[1;31morigin/back_end[m[33m)[m
+Merge: c90c1e8 bf116b1
+Author: GHfbend <37010455+GHfbend@users.noreply.github.com>
+Date:   Tue May 22 12:27:39 2018 +0900
+
+    Merge pull request #4 from davidkunin/back_end
+    
+    backend
+
+[33mcommit bf116b1336c3782b827d337802427d296b7ad598[m
+Merge: 85020ff 0cf65a7
+Author: Kun <davidkunin@gmail.com>
+Date:   Mon May 21 09:54:11 2018 +0000
+
+    Merge branch 'back_end' of https://github.com/davidkunin/HufsLikelion
+
+[33mcommit 85020ff227d6e4e1e7eeb585fac6e01b2f04f11e[m
+Author: Kun <davidkunin@gmail.com>
+Date:   Mon May 21 09:53:07 2018 +0000
+
+    backend second
+
+[33mcommit 504d6a45397c3f9b30851d2df721e0fb882f2f45[m
+Merge: 6960d9c 0cf65a7
+Author: GHfbend <37010455+GHfbend@users.noreply.github.com>
+Date:   Mon May 21 15:47:50 2018 +0900
+
+    Merge pull request #3 from davidkunin/back_end
+    
+    readme 수정
+
+[33mcommit c90c1e8b0174c4ad2cb571f6cb4ed72a5757e4b0[m
+Merge: 61178b4 0cf65a7
+Author: GHfbend <37010455+GHfbend@users.noreply.github.com>
+Date:   Mon May 21 15:46:40 2018 +0900
+
+    Merge pull request #2 from davidkunin/back_end
+    
+    5/21
+
+[33mcommit 0cf65a71a0d6502d20bfaad22b5a5dde27225d82[m
+Author: davidkunin <37537302+davidkunin@users.noreply.github.com>
+Date:   Mon May 21 15:12:00 2018 +0900
+
+    Update README.md
+
+[33mcommit ac7cf9dc70babc1eda65f31a081b6961ad7d2c1d[m
+Author: davidkunin <37537302+davidkunin@users.noreply.github.com>
+Date:   Mon May 21 15:11:49 2018 +0900
+
+    Update README.md
+
+[33mcommit daa92779d148f095dde3ce54cefab535db6ecda1[m
+Author: davidkunin <37537302+davidkunin@users.noreply.github.com>
+Date:   Mon May 21 15:11:36 2018 +0900
+
+    Update README.md
+
+[33mcommit 1e241f07cfd86c602a63fc9458bcde9e3403abf7[m
+Author: davidkunin <37537302+davidkunin@users.noreply.github.com>
+Date:   Mon May 21 14:44:34 2018 +0900
+
+    Update README.md
+
+[33mcommit 18ef4208a7146ec0cfc7850795b93af4269a7be5[m
+Author: davidkunin <37537302+davidkunin@users.noreply.github.com>
+Date:   Mon May 21 14:44:15 2018 +0900
+
+    Update README.md
+
+[33mcommit 4f664fa6e0d340555a571e15a1c7a1d40c3e8b99[m
+Author: davidkunin <37537302+davidkunin@users.noreply.github.com>
+Date:   Mon May 21 14:43:35 2018 +0900
+
+    Update README.md
+
+[33mcommit 862fabb01b29089066bfdd63e743cffa3d9bdca2[m
+Author: davidkunin <37537302+davidkunin@users.noreply.github.com>
+Date:   Mon May 21 14:43:12 2018 +0900
+
+    Update README.md
+
+[33mcommit ac42f56d6a8a573398baa3d67438c440870b6204[m
+Author: davidkunin <37537302+davidkunin@users.noreply.github.com>
+Date:   Mon May 21 14:42:48 2018 +0900
+
+    Update README.md
+
+[33mcommit 7261e12b1ada48819c77b0719a50ad3c587f4de4[m
+Author: davidkunin <37537302+davidkunin@users.noreply.github.com>
+Date:   Mon May 21 14:42:12 2018 +0900
+
+    Update README.md
+
+[33mcommit 49667a2b7d52e62c109439675ddf4dce3bf2ea9b[m
+Author: davidkunin <37537302+davidkunin@users.noreply.github.com>
+Date:   Mon May 21 14:41:56 2018 +0900
+
+    Update README.md
+
+[33mcommit a705082818c06adb908f2dfc3b93aef9550419ee[m
+Author: davidkunin <37537302+davidkunin@users.noreply.github.com>
+Date:   Mon May 21 14:41:26 2018 +0900
+
+    Update README.md
+
+[33mcommit 5c17fca43ddca3a9c8418c7d7d921280f926f584[m
+Author: Kun <davidkunin@gmail.com>
+Date:   Mon May 21 05:34:24 2018 +0000
+
+    backend first
+
+[33mcommit fb57718eebbef1f948f516fa0f5e7beae26edbf7[m
+Author: Kun <davidkunin@gmail.com>
+Date:   Mon May 21 05:12:12 2018 +0000
+
+    controller
+
+[33mcommit 6960d9cf9136b864f56c7a8adf794f11b8212a52[m
+Author: EC2 Default User <ec2-user@ip-172-31-11-195.us-east-2.compute.internal>
+Date:   Wed May 16 02:02:06 2018 +0000
+
+    Foundation
+
+[33mcommit 1a2dddff62c79c5033206cf943db4b9fc5985703[m
+Author: EC2 Default User <ec2-user@ip-172-31-11-195.us-east-2.compute.internal>
+Date:   Fri May 11 06:32:16 2018 +0000
+
+    go
+
+[33mcommit 61178b40b9e33949d18c4a283278476a288a6db5[m
+Author: EC2 Default User <ec2-user@ip-172-31-1-155.us-east-2.compute.internal>
+Date:   Thu May 10 14:33:07 2018 +0000
+
+    first commit

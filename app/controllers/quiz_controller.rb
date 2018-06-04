@@ -1,6 +1,6 @@
 class QuizController < ApplicationController
    def index
-    @quizzes = Quiz.all
+    @quizzes = Quiz.all.page(params[:page]).per(10)
   end
 
   def new
@@ -19,6 +19,9 @@ class QuizController < ApplicationController
 
   def show
     @quiz = Quiz.find(params[:id])
+    
+    @quiz.view_count = @quiz.view_count + 1
+    @quiz.save
   end
   
   def edit
@@ -35,11 +38,30 @@ class QuizController < ApplicationController
     
     redirect_to "/quiz/show/#{@quiz.id}"
     
-    end
+  end
 
   def destroy
     @quiz = Quiz.find(params[:id])
     @quiz.destroy
     redirect_to '/quiz/index'
   end
+  
+  def writecomment
+    @comment = Quizcomment.new
+    @comment.content = params[:content]
+    @comment.quiz_id = params[:quiz_id]
+    @comment.user_email = params[:user_email]
+    @comment.save
+    redirect_to '/quiz/index'
+  end
+      
+  def destroycomment
+    @qna = params[:quiz_id]
+    destroycomment = Quizcomment.find(params[:quizcomment_id])
+    destroycomment.destroy
+    
+    redirect_back(fallback_location: root_path)
+  end  
+  
+  
 end

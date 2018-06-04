@@ -1,0 +1,14 @@
+<div class="container">
+
+<%= bootstrap_form_for(@qnareply, url: qna_qnareplies_path) do |f|%>
+    <%= f.text_field :title, label: "제목" %><br>
+    <%= f.text_area :content,label: "내용", :class => "tinymce", :rows => 40, :cols => 120%>
+    <%= f.hidden_field :user_email, value: current_user.email%>
+    <%= f.hidden_field :user_name, value: current_user.name%>
+    <%= f.hidden_field :qna_id, value: params[:qna_id]%>
+    <%= f.submit "작성"%>
+    
+    <%= tinymce %>
+    
+<% end %>
+</div>

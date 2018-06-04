@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   
-  devise_for :users
+  devise_for :users, :controllers => { registrations: 'registrations' }
+  
   root 'home#index'
   
   get 'home/index'
@@ -8,22 +9,27 @@ Rails.application.routes.draw do
   #회원 페이지
   get 'private/index'
   
-  #질문 게시판 라우팅
-  get 'qna/index'
-
-  get 'qna/new'
-
-  post 'qna/create' => 'qna#create'
+  #qnas 페이지
+  resources :qnas do
+    resources :qnacomments, only: [:create, :destroy]
+    resources :qnareplies, only: [:new, :create, :destroy]
+  end
   
-  get 'qna/show/:id' => 'qna#show'
-  
-  get 'qna/edit/:id' => 'qna#edit'
+  # 팁
 
-  post 'qna/update/:id' => 'qna#update'
+  get 'tips/index'
 
-  get 'qna/destroy/:id' => 'qna#destroy'
+  get 'tips/new'
+
+  get 'tips/create'
+
+  get 'tips/edit'
+
+  get 'tips/update'
+
+  get 'tips/destroy'
+
   
-  post 'qna/writecomment' => 'qna#writecomment'
   
   #수업 시간 자료 게시판 라우팅
   get 'session/index'
@@ -42,24 +48,32 @@ Rails.application.routes.draw do
   
   post 'session/writecomment' => 'session#writecomment'
   
+  get 'session/destroycomment/:sessioncomment_id' => 'session#destroycomment'
+  
   
   #꿀팁 계시판 라우팅
-  get 'tip/index'
-
-  get 'tip/new'
-
-  post 'tip/create' => 'tip#create'
   
-  get 'tip/show/:id' => 'tip#show'
-  
-  get 'tip/edit/:id' => 'tip#edit'
+  resources :tips do
+    resources :tipcomments, only: [:create, :destroy]
+  end
+  # get 'tip/index'
 
-  post 'tip/update/:id' => 'tip#update'
+  # get 'tip/new'
 
-  get 'tip/destroy/:id' => 'tip#destroy'
+  # post 'tip/create' => 'tip#create'
   
-  post 'tip/writecomment' => 'tip#writecomment'
+  # get 'tip/show/:id' => 'tip#show'
   
+  # get 'tip/edit/:id' => 'tip#edit'
+
+  # post 'tip/update/:id' => 'tip#update'
+
+  # get 'tip/destroy/:id' => 'tip#destroy'
+  
+  # post 'tip/writecomment' => 'tip#writecomment'
+  
+  # get 'tip/destroycomment/:tipcomment_id' => 'tip#destroycomment'
+
 
   #퀴즈 게시판 라우팅
   get 'quiz/index'
@@ -78,7 +92,12 @@ Rails.application.routes.draw do
   
   post 'quiz/writecomment' => 'quiz#writecomment'
   
+  get 'quiz/destroycomment/:quizcomment_id' => 'quiz#destroycomment'
+  
   #슬랙 알림장 라우팅
   post 'private/slack_create' => 'private#slack_create'
+  
+  
+
   
 end

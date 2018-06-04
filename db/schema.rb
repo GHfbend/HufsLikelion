@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180523142136) do
+ActiveRecord::Schema.define(version: 20180601003955) do
 
   create_table "notices", force: :cascade do |t|
     t.string "user_name"
@@ -20,19 +20,44 @@ ActiveRecord::Schema.define(version: 20180523142136) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "punches", force: :cascade do |t|
+    t.integer "punchable_id", null: false
+    t.string "punchable_type", limit: 20, null: false
+    t.datetime "starts_at", null: false
+    t.datetime "ends_at", null: false
+    t.datetime "average_time", null: false
+    t.integer "hits", default: 1, null: false
+    t.index ["average_time"], name: "index_punches_on_average_time"
+    t.index ["punchable_type", "punchable_id"], name: "punchable_index"
+  end
+
   create_table "qnacomments", force: :cascade do |t|
     t.string "content"
     t.string "user_email"
+    t.string "user_name"
     t.integer "qna_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["qna_id"], name: "index_qnacomments_on_qna_id"
   end
 
+  create_table "qnareplies", force: :cascade do |t|
+    t.string "title"
+    t.string "user_email"
+    t.text "content"
+    t.string "user_name"
+    t.integer "qna_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["qna_id"], name: "index_qnareplies_on_qna_id"
+  end
+
   create_table "qnas", force: :cascade do |t|
     t.string "title"
     t.text "content"
     t.string "user_email"
+    t.string "user_name"
+    t.integer "view_count", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -47,9 +72,10 @@ ActiveRecord::Schema.define(version: 20180523142136) do
   end
 
   create_table "quizzes", force: :cascade do |t|
-    t.string "title"
     t.text "content"
     t.string "user_email"
+    t.string "title"
+    t.integer "view_count", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -67,6 +93,8 @@ ActiveRecord::Schema.define(version: 20180523142136) do
     t.string "title"
     t.text "content"
     t.string "user_email"
+    t.string "s3_file"
+    t.integer "view_count", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -84,6 +112,7 @@ ActiveRecord::Schema.define(version: 20180523142136) do
     t.string "title"
     t.text "content"
     t.string "user_email"
+    t.integer "view_count", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -101,6 +130,7 @@ ActiveRecord::Schema.define(version: 20180523142136) do
     t.string "last_sign_in_ip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "name", default: "", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

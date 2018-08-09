@@ -20,3 +20,4 @@
 //= require tinymce
 //= require trix
 //= require_tree .
+//= require tinymce-jquery

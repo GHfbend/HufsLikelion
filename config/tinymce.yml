@@ -1,6 +1,7 @@
 toolbar:
-  - styleselect | bold italic | undo redo
+  - styleselect | bold italic | undo redo | uploadimage
 #   - image | link
-# plugins:
+plugins:
 #   - image
 #   - link
+- uploadimage

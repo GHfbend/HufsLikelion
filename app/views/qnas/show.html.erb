@@ -11,7 +11,7 @@
         </div>
     
         <div style="text-align:right">
-            <%="조회수: #{@qna.view_count}" %> / 작성 일자 : <%=@qna.created_at.strftime("%Y.%m.%d %H:%M") %> / 작성자 : <%=@qna.user_name%>(<%=@qna.user_email%>)<br><br>
+            <%="조회수: #{@qna.unique_impression_count}" %> / 작성 일자 : <%=@qna.created_at.strftime("%Y.%m.%d %H:%M") %> / 작성자 : <%=@qna.user_name%>(<%=@qna.user_email%>)<br><br>
         </div>
     </div>
 
@@ -70,4 +70,6 @@
           <%end%>
           <%else%>
       <%end%>
+      
+      <%= button_to '목록', qnas_path, method: :get %>
 </div>

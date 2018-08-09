@@ -19,7 +19,8 @@
             <th width = "2%">#</th>
             <th width = "3%"></th>
             <th width = "70%">제목</th>
-            <th width = "15%">작성자</th>
+            <th width = "5%">조회수</th>
+            <th width = "10%">작성자</th>
             <th width = "15%">작성 시간</th>
         </tr>
         <% @qnas.each do |x|%>
@@ -27,6 +28,7 @@
                 <td><%=x.id%></td>
                 <td></td>
                 <td><%=x.title%></td>
+                <td><%=x.unique_impression_count%></td>
                 <td><%=x.user_name%></td>
                 <td><%=x.created_at.strftime("%Y.%m.%d %H:%M")%></td>
             </tr>
@@ -34,11 +36,13 @@
         <% if x.qnareplies.empty? %>
             <% else %>
                 <% x.qnareplies.each do |y| %>
-                    <tr onclick="window.location='/qna/show/<%=x.id%>';">
+                    <tr onclick="window.location='/qnas/<%=x.id%>';">
                         <td></td>
                         <td>RE:</td>
                         <td><%=y.title%></td>
+                        <td></td>
                         <td><%=y.user_name%></td>
+
                         <td><%=y.created_at.strftime("%Y.%m.%d %H:%M")%></td>
                     </tr>
                 <%end%>

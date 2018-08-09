@@ -5,6 +5,7 @@ class CreateQuizzes < ActiveRecord::Migration[5.1]
       t.text :content
       t.string :user_email
       t.string :title
+      t.string :user_name
       
       t.integer :view_count,default: 0
       

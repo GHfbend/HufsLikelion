@@ -12,6 +12,7 @@
 # end
 
 User.create(email: 'a@likelion.org', password: '123456')
+User.create(email: 'qkrgusdn21@likelion.org', password: '123456', name: '현우')
 
 20.times do |i|
     uid = [1, 2].sample

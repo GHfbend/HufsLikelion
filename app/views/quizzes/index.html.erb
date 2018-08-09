@@ -1,0 +1,41 @@
+<div class="container">
+
+<h1>퀴즈 게시판</h1>
+<p>퀴즈와 답변이 이루어질 게시판입니다.</p>
+
+<!-- 검색 기능 -->
+<%= form_tag(quizzes_path, :method => "get", id: "search-form") do %>
+    <%= text_field_tag :search, params[:search], placeholder: "제목이나 게시글 내용을 입력하세요", size: 40%>
+    <%= submit_tag "Search"%>
+<%end%>
+<br>
+<%=link_to '새 글 작성', new_quiz_path %>
+
+<!--글 목록 -->
+
+<div class="table-responsive">
+    <table class="table table-fit table-hover">
+        <tr>
+            <th width = "2%">#</th>
+            <th width = "3%"></th>
+            <th width = "70%">제목</th>
+            <th width = "15%">작성자</th>
+            <th width = "15%">작성 시간</th>
+        </tr>
+        <% @quizzes.each do |x|%>
+            <tr onclick="window.location='/quizzes/<%=x.id%>';">
+                <td><%=x.id%></td>
+                <td></td>
+                <td><%=x.title%></td>
+                <td><%=x.user_name%></td>
+                <td><%=x.created_at.strftime("%Y.%m.%d %H:%M")%></td>
+            </tr>
+        <% end %>
+    </table>
+    
+<!-- 페이지 만들어주는 기능 -->
+    <%= paginate @quizzes %>
+    
+</div>
+
+</div>

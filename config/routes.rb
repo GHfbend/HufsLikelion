@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
   
+  #devise 페이지
   devise_for :users, :controllers => { registrations: 'registrations' }
   
+  #루트 페이지
   root 'home#index'
-  
   get 'home/index'
   
   #회원 페이지
@@ -15,21 +16,15 @@ Rails.application.routes.draw do
     resources :qnareplies, only: [:new, :create, :destroy]
   end
   
-  # 팁
-
-  get 'tips/index'
-
-  get 'tips/new'
-
-  get 'tips/create'
-
-  get 'tips/edit'
-
-  get 'tips/update'
-
-  get 'tips/destroy'
-
+  #quizzes 페이지
+  resources :quizzes do
+    resources :quizcomments, only: [:create, :destroy]
+  end
   
+  #tips 페이지
+  resources :tips do
+    resources :tipcomments, only: [:create, :destroy]
+  end
   
   #수업 시간 자료 게시판 라우팅
   get 'session/index'
@@ -53,9 +48,7 @@ Rails.application.routes.draw do
   
   #꿀팁 계시판 라우팅
   
-  resources :tips do
-    resources :tipcomments, only: [:create, :destroy]
-  end
+  
   # get 'tip/index'
 
   # get 'tip/new'
@@ -74,28 +67,11 @@ Rails.application.routes.draw do
   
   # get 'tip/destroycomment/:tipcomment_id' => 'tip#destroycomment'
 
-
-  #퀴즈 게시판 라우팅
-  get 'quiz/index'
-
-  get 'quiz/new'
-
-  post 'quiz/create' => 'quiz#create'
-  
-  get 'quiz/show/:id' => 'quiz#show'
-  
-  get 'quiz/edit/:id' => 'quiz#edit'
-
-  post 'quiz/update/:id' => 'quiz#update'
-
-  get 'quiz/destroy/:id' => 'quiz#destroy'
-  
-  post 'quiz/writecomment' => 'quiz#writecomment'
-  
-  get 'quiz/destroycomment/:quizcomment_id' => 'quiz#destroycomment'
   
   #슬랙 알림장 라우팅
   post 'private/slack_create' => 'private#slack_create'
+  
+  post '/tinymce_assets' => 'tinymce_assets#create'
   
   
 

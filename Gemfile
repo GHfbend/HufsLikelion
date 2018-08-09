@@ -4,6 +4,10 @@ git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
   "https://github.com/#{repo_name}.git"
 end
+
+#조회수
+gem 'impressionist'
+
 gem 'kaminari'
 #bootstrap
 gem 'bootstrap-sass', '~> 3.3.7'
@@ -14,6 +18,12 @@ gem 'devise-bootstrap-views'
 
 gem "bootstrap_form" 
 gem 'tinymce-rails'
+
+#이미지 업로더
+gem 'tinymce-rails-imageupload', '~> 4.0.0.beta'
+gem 'carrierwave'
+gem 'fog', '~> 1.41.0'
+gem 'figaro'
 
 
 #게시판 텍스트 에디터

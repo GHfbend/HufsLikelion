@@ -1,40 +1,36 @@
 <div class="container">
-    <h1><%= @tip. title %></h1>
+    <h1><%= @quiz. title %></h1>
     
     <div>
         <div style="text-align:left">
-            <%if user_signed_in? && @tip.user_email == current_user.email%>
-                <%=link_to '수정', edit_tip_path%>
-                <%=link_to '삭제', tip_path, method: :delete%>
+            <%if user_signed_in? && @quiz.user_email == current_user.email%>
+                <%=link_to '수정', edit_quiz_path%>
+                <%=link_to '삭제', quiz_path, method: :delete%>
             <%else%>
             <%end%>
         </div>
     
         <div style="text-align:right">
-            <%="조회수: #{@tip.view_count}" %> / 작성 일자 : <%=@tip.created_at.strftime("%Y.%m.%d %H:%M") %> / 작성자 : <%=@tip.user_email%>(<%=@tip.user_email%>)<br><br>
+            <%="조회수: #{@quiz.view_count}" %> / 작성 일자 : <%=@quiz.created_at.strftime("%Y.%m.%d %H:%M") %> / 작성자 : <%=@quiz.user_name%>(<%=@quiz.user_email%>)<br><br>
         </div>
     </div>
 
     <div class="well">
-        <%= simple_format(@tip.content)%> <br>
+        <%= simple_format(@quiz.content)%> <br>
     </div>
-    <a href = '/tips/<%=@tip.id%>/qnareplies/new'>답글 작성</a>
-    <br>
     
-
-    
-        <% if @tipcomments.empty? %>
+        <% if @quizcomments.empty? %>
         <% else%>
         <strong>댓글</strong><br><br>
             <table class="table table-fit">
             <% i = 1 %>
-                <%@tipcomments.each do |x| %>
+                <%@quizcomments.each do |x| %>
                     <tr>
                         <td width = "5%"><%=i%></td>
-                        <td width = "70%"><%=x.content %></td> 
+                        <td width = "70%"><%=x.content %></td>
                         <td width = "20%"><center> by. <%=x.user_name%>(<%=x.user_email%>)</center></td>
                         <%if user_signed_in? && current_user.email == x.user_email %>
-                            <td width = "5%"><%= link_to "삭제", tip_tipcomment_path(@tip, x), method: :delete, remote: true %></td>
+                            <td width = "5%"><%= link_to "삭제", quiz_quizcomment_path(@quiz, x), method: :delete, remote: true %></td>
                         <%else%>
                             <td width = "5%"></td>
                         <%end%>
@@ -46,10 +42,10 @@
         <%end%>
         
         <% if user_signed_in? %>
-            <%= bootstrap_form_for (@tipcomment), url: tip_tipcomments_path(@tip) do |f| %>
+            <%= bootstrap_form_for (@quizcomment), url: quiz_quizcomments_path(@quiz) do |f| %>
               <%= f.hidden_field :user_email, value: current_user.email%>
               <%= f.hidden_field :user_name, value: current_user.name%>
-              <%= f.hidden_field :tip_id, value: @tip.id %>
+              <%= f.hidden_field :quiz_id, value: @quiz.id %>
               <%= f.text_field :content, label: "댓글 작성" %>
               <%= f.submit "작성" %>
           <%end%>

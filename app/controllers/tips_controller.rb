@@ -1,5 +1,6 @@
 class TipsController < ApplicationController
     before_action :set_tip, only: [:show, :edit, :update, :destroy]
+    load_and_authorize_resource
 
   def index
     if params[:search]
@@ -12,6 +13,7 @@ class TipsController < ApplicationController
 
   def new
     @tip=Tip.new
+    
   end
 
   def create    

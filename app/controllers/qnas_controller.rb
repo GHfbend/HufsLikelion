@@ -2,6 +2,7 @@ class QnasController < ApplicationController
   
   before_action :set_qna, only: [:show, :edit, :update, :destroy]
   before_action :log_impression, only: [:show]
+  load_and_authorize_resource
   
   def index
     if params[:search]
@@ -25,6 +26,7 @@ class QnasController < ApplicationController
 
   def new
     @qna = Qna.new
+    
   end
 
   def create

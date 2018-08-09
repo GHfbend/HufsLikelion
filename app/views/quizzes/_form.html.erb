@@ -1,8 +1,21 @@
 <div class="container">
 
 <%= bootstrap_form_for(@quiz) do |f|%>
-    <%= f.text_field :title%><br>
-    <%= f.text_area :content, :class => "tinymce", :rows => 40, :cols => 120%>
+    <%= f.text_field :title, label: "문제"%>
+    <%= f.text_area :content, label: "문제 내용", cols: "30", rows: "10", placeholder: "질문을 입력하여 주세요!"%>
+    <%= f.text_field :answer_one, label: "선지 1"%>
+    <%= f.text_field :answer_two, label: "선지 2"%>
+    <%= f.text_field :answer_three, label: "선지 3"%>
+    <%= f.text_field :answer_four, label: "선지 4"%>
+    <%= f.text_field :answer_five, label: "선지 5"%>
+    
+    <%= f.radio_button :the_answer, '1', label: "1번" %> 
+    <%= f.radio_button :the_answer, '2', label: "2번" %>
+    <%= f.radio_button :the_answer, '3', label: "3번" %>
+    <%= f.radio_button :the_answer, '4', label: "4번" %>
+    <%= f.radio_button :the_answer, '5', label: "5번" %>
+    
+    
     <%= f.hidden_field :user_email, value: current_user.email%>
     <%= f.hidden_field :user_name, value: current_user.name%>
     <%= f.submit "작성"%>

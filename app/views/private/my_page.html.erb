@@ -1,0 +1,17 @@
+<h1><%= @user.name %>님의 글</h1>
+
+<% @my_quiz.each do |x| %>
+    <%= link_to "#{x.title}", quiz_path(x) %><br>
+<% end %>
+
+<% @my_qna.each do |x| %>
+    <%= link_to "#{x.title}", quiz_path(x) %><br>
+<% end %>
+
+<% @my_tip.each do |x| %>
+    <%= link_to "#{x.title}", quiz_path(x) %><br>
+<% end %>
+
+<% @my_session.each do |x| %>
+    <%= link_to "#{x.title}", quiz_path(x) %><br>
+<% end %>

@@ -11,10 +11,27 @@
 #     Session.create!(title: "#{i+1}번 째 글입니다.", content: "Hack your life!", user_id: uid)
 # end
 
-User.create(email: 'a@likelion.org', password: '123456')
+User.create(email: 'a@likelion.org', password: '123456', name: '은진')
 User.create(email: 'qkrgusdn21@likelion.org', password: '123456', name: '현우')
+User.create(email: 'davidkunin@likelion.org', password: '123456', name: '건')
+User.create(email: 's@likelion.org', password: '123123', name: '승윤')
 
 20.times do |i|
-    uid = [1, 2].sample
+    uid = ["a@likelion.org", "qkrgusdn21@likelion.org", "davidkunin@likelion.org", "s@likelion.org"].sample
     Qna.create!(title: "#{i+1} 번 째 글입니다.", content: "Hack Your Like", user_email: uid)
-end    
+end
+
+20.times do |i|
+    uid = ["a@likelion.org", "qkrgusdn21@likelion.org", "davidkunin@likelion.org", "s@likelion.org"].sample
+    Tip.create!(title: "#{i+1} 번 째 글입니다.", content: "Hack Your Like", user_email: uid)
+end
+
+20.times do |i|
+    uid = ["a@likelion.org", "qkrgusdn21@likelion.org", "davidkunin@likelion.org", "s@likelion.org"].sample
+    Lsession.create!(title: "#{i+1} 번 째 글입니다.", content: "Hack Your Like", user_email: uid)
+end
+
+20.times do |i|
+    uid = ["a@likelion.org", "qkrgusdn21@likelion.org", "davidkunin@likelion.org", "s@likelion.org"].sample
+    Quiz.create!(title: "#{i+1} 번 째 글입니다.", content: "Hack Your Like", user_email: uid)
+end

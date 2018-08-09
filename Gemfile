@@ -5,30 +5,35 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+#캘린더
+gem 'fullcalendar-rails'
+gem 'momentjs-rails'
+
 #조회수
 gem 'impressionist'
-
 gem 'kaminari'
+
 #bootstrap
+gem "font-awesome-rails"
 gem 'bootstrap-sass', '~> 3.3.7'
 gem 'bootstrap_form'
+
 #user
 gem 'devise'
 gem 'devise-bootstrap-views'
+gem 'cancancan'
+gem 'rolify'
 
-gem "bootstrap_form" 
 gem 'tinymce-rails'
 
 #이미지 업로더
 gem 'tinymce-rails-imageupload', '~> 4.0.0.beta'
 gem 'carrierwave'
-gem 'fog', '~> 1.41.0'
 gem 'figaro'
 
 
 #게시판 텍스트 에디터
 gem 'trix'
-
 gem 'jquery-rails'
 
 #파일 업로드 (인건) 테스트
@@ -91,14 +96,6 @@ end
 group :production do
   gem 'pg' , '~>0.21'
   gem 'rails_12factor'
-  
 end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-
-group :production do
-  gem 'pg', '~>0.21'
-  gem 'rails_12factor'
-  
-  
-end

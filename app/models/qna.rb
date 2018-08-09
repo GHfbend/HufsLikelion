@@ -1,10 +1,12 @@
 class Qna < ApplicationRecord
+    resourcify
     has_many :qnacomments, dependent: :destroy
     has_many :qnareplies, dependent: :destroy
     belongs_to :user, required: false
     
     has_many :impressions, :as=>:impressionable
-    
+    has_many :qnalikes
+    has_many :l_users, through: :qnalikes, source: :user
     # acts_as_punchable
     
   def self.search(search)

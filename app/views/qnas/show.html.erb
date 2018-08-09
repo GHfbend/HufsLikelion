@@ -5,7 +5,7 @@
         <div style="text-align:left">
             <%if user_signed_in? && @qna.user_email == current_user.email%>
                 <%=link_to '수정', edit_qna_path%>
-                <%=link_to '삭제', qna_path, method: :delete%>
+                <%=link_to '삭제', qna_path, method: :delete, data: {confirm: 'are you sure?' }%>
             <%else%>
             <%end%>
         </div>
@@ -26,7 +26,7 @@
     
     <% @qna.qnareplies.each do |x|%>
     <div class="well">
-      제목: <strong><%= x.title %></strong> / 작성자 : <%=x.user_name%>(<%=x.user_email%>)<br>
+      답글: <strong><%= x.title %></strong> / 작성자 : <%=x.user_name%>(<%=x.user_email%>)<br>
       <%= simple_format(x.content) %>
         <%if user_signed_in? && x.user_email == current_user.email%>
           <%=link_to '답글삭제', qna_qnareply_path(:id => "#{x.id}", :qna_id=> "#{@qna.id}"), method: :delete %>
@@ -49,7 +49,7 @@
                         <td width = "70%"><%=x.content %></td> 
                         <td width = "20%"><center> by. <%=x.user_name%>(<%=x.user_email%>)</center></td>
                         <%if user_signed_in? && current_user.email == x.user_email %>
-                            <td width = "5%"><%= link_to "삭제", qna_qnacomment_path(@qna, x), method: :delete, remote: true %></td>
+                            <td width = "5%"><%= link_to "삭제", qna_qnacomment_path(@qna, x), method: :delete, data: {confirm: 'are you sure?' }, remote: true %></td>
                         <%else%>
                             <td width = "5%"></td>
                         <%end%>
@@ -59,7 +59,28 @@
             </table>
             <hr>
         <%end%>
-        
+<!--좋아요 기능 -->
+    <% if @qna.l_users.include?(current_user) %>
+        <%= link_to "안좋아요", like_qna_path, method: :post %>
+    <% else %>
+        <%= link_to "좋아요", like_qna_path, method: :post %>
+    <% end %>
+    
+    <%= fa_icon('thumbs-up') %>
+    <strong>
+          <% if @qna.qnalikes.count > 3 %>
+              <%= @qna.l_users.sample(3).each do |user| %> 
+                  <%= user.name %>님,
+              <% end %>
+              외 <%= @qna.qnalikes.count-3 %>명이 좋아합니다.
+          <% elsif @qna.qnalikes.count > 0 %>
+              <% @qna.l_users.each do |user| %>
+                  <%= user.name %> 님,
+              <% end %>
+              이 좋아합니다.
+          <% end %>
+    </strong>
+<!-- 좋아요 기능 끝 -->
         <% if user_signed_in? %>
             <%= bootstrap_form_for (@qnacomment), url: qna_qnacomments_path(@qna) do |f| %>
               <%= f.hidden_field :user_email, value: current_user.email%>

@@ -9,7 +9,9 @@ class User < ApplicationRecord
   has_many :quizcomments
   has_many :qnacomments
   has_many :qnareplies
-  
+  has_many :qnalikes
+  has_many :l_qnas, through: :qnalikes, source: :qna
+  rolify
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,

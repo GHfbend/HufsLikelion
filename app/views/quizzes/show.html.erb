@@ -5,7 +5,7 @@
         <div style="text-align:left">
             <%if user_signed_in? && @quiz.user_email == current_user.email%>
                 <%=link_to '수정', edit_quiz_path%>
-                <%=link_to '삭제', quiz_path, method: :delete%>
+                <%=link_to '삭제', quiz_path, method: :delete, data: {confirm: 'are you sure?' }%>
             <%else%>
             <%end%>
         </div>
@@ -16,7 +16,14 @@
     </div>
 
     <div class="well">
-        <%= simple_format(@quiz.content)%> <br>
+        <form action="/quizzes/<%=@quiz.id%>/answer">
+            <input type="radio" name="answer" value="1"> <%=@quiz.answer_one%><br>
+            <input type="radio" name="answer" value="2"> <%=@quiz.answer_two%><br>
+            <input type="radio" name="answer" value="3"> <%=@quiz.answer_three%><br>
+            <input type="radio" name="answer" value="4"> <%=@quiz.answer_four%><br>
+            <input type="radio" name="answer" value="5"> <%=@quiz.answer_five%><br>
+            <input type="submit" value="정답 제출">
+        </form>
     </div>
     
         <% if @quizcomments.empty? %>
@@ -30,7 +37,7 @@
                         <td width = "70%"><%=x.content %></td>
                         <td width = "20%"><center> by. <%=x.user_name%>(<%=x.user_email%>)</center></td>
                         <%if user_signed_in? && current_user.email == x.user_email %>
-                            <td width = "5%"><%= link_to "삭제", quiz_quizcomment_path(@quiz, x), method: :delete, remote: true %></td>
+                            <td width = "5%"><%= link_to "삭제", quiz_quizcomment_path(@quiz, x), method: :delete, data: {confirm: 'are you sure?' }, remote: true %></td>
                         <%else%>
                             <td width = "5%"></td>
                         <%end%>

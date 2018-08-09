@@ -1,6 +1,7 @@
 class QuizzesController < ApplicationController
 
-  before_action :set_quiz, only: [:show, :edit, :update, :destroy]
+  before_action :set_quiz, only: [:show, :edit, :update, :destroy, :answer]
+  load_and_authorize_resource
   
   def index
     if params[:search]
@@ -21,6 +22,7 @@ class QuizzesController < ApplicationController
 
   def new
     @quiz = Quiz.new
+    
   end
 
   def create
@@ -42,13 +44,17 @@ class QuizzesController < ApplicationController
     redirect_to quizzes_path
   end
   
+  def answer
+    @answer = params[:answer]
+  end
+  
   private 
   def set_quiz
     @quiz = Quiz.find(params[:id])
   end
   
   def quiz_params
-      params.require(:quiz).permit(:user_email, :user_name, :title, :content)
+      params.require(:quiz).permit(:user_email, :user_name, :title, :content, :answer_one, :answer_two, :answer_three, :answer_four, :answer_five, :the_answer)
   end
   
 end

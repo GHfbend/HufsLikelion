@@ -1,4 +1,5 @@
 class Tip < ApplicationRecord
+    resourcify
     has_many :tipcomments, dependent: :destroy
     belongs_to :user, required: false
     

@@ -1,0 +1,11 @@
+<%if @quiz.the_answer == @answer.to_i%>
+    <h1>정답입니다!</h1>
+    <%= link_to '다시 풀어보기', :back %>
+    <%= link_to '목록으로', quizzes_path %>
+    
+<%else%>
+    <h1>땡!</h1>
+    <%= link_to '다시 풀어보기', :back %>
+<%end%>
+
+

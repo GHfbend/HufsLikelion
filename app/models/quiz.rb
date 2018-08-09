@@ -1,4 +1,5 @@
 class Quiz < ApplicationRecord
+    resourcify
     has_many :quizcomments, dependent: :destroy
     belongs_to :user, required: false
     

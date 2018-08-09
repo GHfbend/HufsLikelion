@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
   
+  resources :events
+  
+  'home/index'
+
+  get 'home/index2'
+
   #devise 페이지
   devise_for :users, :controllers => { registrations: 'registrations' }
   
@@ -9,11 +15,15 @@ Rails.application.routes.draw do
   
   #회원 페이지
   get 'private/index'
+  get 'private/my_page'
+  
+
+
   
   #qnas 페이지
   resources :qnas do
     resources :qnacomments, only: [:create, :destroy]
-    resources :qnareplies, only: [:new, :create, :destroy]
+    resources :qnareplies, only: [:create, :destroy]
   end
   
   #quizzes 페이지
@@ -27,45 +37,10 @@ Rails.application.routes.draw do
   end
   
   #수업 시간 자료 게시판 라우팅
-  get 'session/index'
-
-  get 'session/new'
-
-  post 'session/create' => 'session#create'
   
-  get 'session/show/:id' => 'session#show'
-  
-  get 'session/edit/:id' => 'session#edit'
-
-  post 'session/update/:id' => 'session#update'
-
-  get 'session/destroy/:id' => 'session#destroy'
-  
-  post 'session/writecomment' => 'session#writecomment'
-  
-  get 'session/destroycomment/:sessioncomment_id' => 'session#destroycomment'
-  
-  
-  #꿀팁 계시판 라우팅
-  
-  
-  # get 'tip/index'
-
-  # get 'tip/new'
-
-  # post 'tip/create' => 'tip#create'
-  
-  # get 'tip/show/:id' => 'tip#show'
-  
-  # get 'tip/edit/:id' => 'tip#edit'
-
-  # post 'tip/update/:id' => 'tip#update'
-
-  # get 'tip/destroy/:id' => 'tip#destroy'
-  
-  # post 'tip/writecomment' => 'tip#writecomment'
-  
-  # get 'tip/destroycomment/:tipcomment_id' => 'tip#destroycomment'
+  resources :lsessions do
+  resources :lsessioncomments, only: [:create, :destroy]
+  end
 
   
   #슬랙 알림장 라우팅
@@ -74,6 +49,14 @@ Rails.application.routes.draw do
   post '/tinymce_assets' => 'tinymce_assets#create'
   
   
-
+  #좋아요 라우팅
   
+  post '/qna/:id/like', to: 'qnalikes#like_toggle', as: 'like_qna'
+  post '/quiz/:id/like', to: 'quizlikes#like_toggle', as: 'like_quiz'
+  post '/session/:id/like', to: 'sessionlikes#like_toggle', as: 'like_session'
+  post '/tip/:id/like', to: 'tiplikes#like_toggle', as: 'like_tip'
+
+  #퀴즈 라우팅
+  get '/quizzes/:id/answer' => 'quizzes#answer'
+
 end

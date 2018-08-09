@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180707110139) do
+ActiveRecord::Schema.define(version: 20180809164319) do
+
+  create_table "events", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "images", force: :cascade do |t|
     t.string "alt"
@@ -46,6 +55,27 @@ ActiveRecord::Schema.define(version: 20180707110139) do
     t.index ["user_id"], name: "index_impressions_on_user_id"
   end
 
+  create_table "lsessioncomments", force: :cascade do |t|
+    t.string "content"
+    t.string "user_email"
+    t.string "user_name"
+    t.integer "lsession_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["lsession_id"], name: "index_lsessioncomments_on_lsession_id"
+  end
+
+  create_table "lsessions", force: :cascade do |t|
+    t.string "title"
+    t.text "content"
+    t.string "user_email"
+    t.string "user_name"
+    t.integer "user_id"
+    t.integer "view_count", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "notices", force: :cascade do |t|
     t.string "user_name"
     t.text "token"
@@ -75,6 +105,13 @@ ActiveRecord::Schema.define(version: 20180707110139) do
     t.index ["qna_id"], name: "index_qnacomments_on_qna_id"
   end
 
+  create_table "qnalikes", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "qna_id"
+    t.index ["qna_id"], name: "index_qnalikes_on_qna_id"
+    t.index ["user_id"], name: "index_qnalikes_on_user_id"
+  end
+
   create_table "qnareplies", force: :cascade do |t|
     t.string "title"
     t.string "user_email"
@@ -91,6 +128,7 @@ ActiveRecord::Schema.define(version: 20180707110139) do
     t.text "content"
     t.string "user_email"
     t.string "user_name"
+    t.integer "user_id"
     t.integer "view_count", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -111,28 +149,27 @@ ActiveRecord::Schema.define(version: 20180707110139) do
     t.string "user_email"
     t.string "title"
     t.string "user_name"
+    t.integer "user_id"
+    t.text "answer_one"
+    t.text "answer_two"
+    t.text "answer_three"
+    t.text "answer_four"
+    t.text "answer_five"
+    t.integer "the_answer"
     t.integer "view_count", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "sessioncomments", force: :cascade do |t|
-    t.string "content"
-    t.string "user_email"
-    t.integer "session_id"
+  create_table "roles", force: :cascade do |t|
+    t.string "name"
+    t.string "resource_type"
+    t.integer "resource_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["session_id"], name: "index_sessioncomments_on_session_id"
-  end
-
-  create_table "sessions", force: :cascade do |t|
-    t.string "title"
-    t.text "content"
-    t.string "user_email"
-    t.string "s3_file"
-    t.integer "view_count", default: 0
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.index ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id"
+    t.index ["name"], name: "index_roles_on_name"
+    t.index ["resource_type", "resource_id"], name: "index_roles_on_resource_type_and_resource_id"
   end
 
   create_table "tipcomments", force: :cascade do |t|
@@ -149,6 +186,7 @@ ActiveRecord::Schema.define(version: 20180707110139) do
     t.text "content"
     t.string "user_email"
     t.string "user_name"
+    t.integer "user_id"
     t.integer "view_count", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -170,6 +208,14 @@ ActiveRecord::Schema.define(version: 20180707110139) do
     t.string "name", default: "", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  create_table "users_roles", id: false, force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "role_id"
+    t.index ["role_id"], name: "index_users_roles_on_role_id"
+    t.index ["user_id", "role_id"], name: "index_users_roles_on_user_id_and_role_id"
+    t.index ["user_id"], name: "index_users_roles_on_user_id"
   end
 
 end

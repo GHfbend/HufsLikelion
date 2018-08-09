@@ -1,0 +1,54 @@
+<div class="container">
+    <h1><%= @lsession.title %></h1>
+    
+    <div>
+        <div style="text-align:left">
+            <%if user_signed_in? && @lsession.user_email == current_user.email%>
+                <%=link_to '수정', edit_lsession_path%>
+                <%=link_to '삭제', lsession_path, method: :delete, data: {confirm: 'are you sure?' } %>
+            <%else%>
+            <%end%>
+        </div>
+    
+        <div style="text-align:right">
+            <%="조회수: #{@lsession.view_count}" %> / 작성 일자 : <%=@lsession.created_at.strftime("%Y.%m.%d %H:%M") %> / 작성자 : <%=@lsession.user_name%>(<%=@lsession.user_email%>)<br><br>
+        </div>
+    </div>
+
+    <div class="well">
+        <%= simple_format(@lsession.content)%> <br>
+    </div>
+    
+        <% if @lsessioncomments.empty? %>
+        <% else%>
+        <strong>댓글</strong><br><br>
+            <table class="table table-fit">
+            <% i = 1 %>
+                <%@lsessioncomments.each do |x| %>
+                    <tr>
+                        <td width = "5%"><%=i%></td>
+                        <td width = "70%"><%=x.content %></td>
+                        <td width = "20%"><center> by. <%=x.user_name%>(<%=x.user_email%>)</center></td>
+                        <%if user_signed_in? && current_user.email == x.user_email %>
+                            <td width = "5%"><%= link_to "삭제", lsession_lsessioncomment_path(@lsession, x), method: :delete, data: {confirm: 'are you sure?' } remote: true %></td>
+                        <%else%>
+                            <td width = "5%"></td>
+                        <%end%>
+                    </tr>
+            <% i = i + 1 %>
+                <%end%>
+            </table>
+            <hr>
+        <%end%>
+        
+        <% if user_signed_in? %>
+            <%= bootstrap_form_for (@lsessioncomment), url: lsession_lsessioncomments_path(@lsession) do |f| %>
+              <%= f.hidden_field :user_email, value: current_user.email%>
+              <%= f.hidden_field :user_name, value: current_user.name%>
+              <%= f.hidden_field :lsession_id, value: @lsession.id %>
+              <%= f.text_field :content, label: "댓글 작성" %>
+              <%= f.submit "작성" %>
+          <%end%>
+          <%else%>
+      <%end%>
+</div>

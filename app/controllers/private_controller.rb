@@ -11,7 +11,13 @@ class PrivateController < ApplicationController
         slack_create.user_name = params[:user_name]
         slack_create.content = params[:text]
         slack_create.save
-            
+    end
     
+    def my_page
+        @user = current_user
+        @my_quiz = Quiz.where(user_email: @user.email).all
+        @my_qna = Qna.where(user_email: @user.email).all
+        @my_session = Lsession.where(user_email: @user.email).all
+        @my_tip = Tip.where(user_email: @user.email).all
     end
 end

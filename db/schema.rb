@@ -128,7 +128,6 @@ ActiveRecord::Schema.define(version: 20180809164319) do
     t.text "content"
     t.string "user_email"
     t.string "user_name"
-    t.integer "user_id"
     t.integer "view_count", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -149,13 +148,6 @@ ActiveRecord::Schema.define(version: 20180809164319) do
     t.string "user_email"
     t.string "title"
     t.string "user_name"
-    t.integer "user_id"
-    t.text "answer_one"
-    t.text "answer_two"
-    t.text "answer_three"
-    t.text "answer_four"
-    t.text "answer_five"
-    t.integer "the_answer"
     t.integer "view_count", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -172,6 +164,25 @@ ActiveRecord::Schema.define(version: 20180809164319) do
     t.index ["resource_type", "resource_id"], name: "index_roles_on_resource_type_and_resource_id"
   end
 
+  create_table "sessioncomments", force: :cascade do |t|
+    t.string "content"
+    t.string "user_email"
+    t.integer "session_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["session_id"], name: "index_sessioncomments_on_session_id"
+  end
+
+  create_table "sessions", force: :cascade do |t|
+    t.string "title"
+    t.text "content"
+    t.string "user_email"
+    t.string "s3_file"
+    t.integer "view_count", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "tipcomments", force: :cascade do |t|
     t.string "content"
     t.string "user_email"
@@ -186,7 +197,6 @@ ActiveRecord::Schema.define(version: 20180809164319) do
     t.text "content"
     t.string "user_email"
     t.string "user_name"
-    t.integer "user_id"
     t.integer "view_count", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
